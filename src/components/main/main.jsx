@@ -2,6 +2,8 @@ import React from "react";
 import PlaceCard from "../place-card/place-card.jsx";
 import PropTypes from "prop-types";
 
+const placeNameClickHandler = () => {};
+
 const Main = ({quantity, placeNames}) => {
   return <main className="page__main page__main--index">
     <h1 className="visually-hidden">Cities</h1>
@@ -62,7 +64,7 @@ const Main = ({quantity, placeNames}) => {
             </ul>
           </form>
           <div className="cities__places-list places__list tabs__content">
-            {placeNames.map((placeName) => <PlaceCard key={placeName} placeName={placeName} />)}
+            {placeNames.map((placeName) => <PlaceCard key={placeName} placeName={placeName} placeNameClickHandler={placeNameClickHandler}/>)}
           </div>
         </section>
         <div className="cities__right-section">
