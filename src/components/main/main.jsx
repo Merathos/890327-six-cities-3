@@ -1,10 +1,8 @@
 import React from "react";
-import PlaceCard from "../place-card/place-card.jsx";
+import OffersList from "../offers-list/offers-list.jsx";
 import PropTypes from "prop-types";
 
-const placeNameClickHandler = () => {};
-
-const Main = ({quantity, placeNames}) => {
+const Main = ({offers, handleRentHeaderClick}) => {
   return <main className="page__main page__main--index">
     <h1 className="visually-hidden">Cities</h1>
     <div className="tabs">
@@ -47,7 +45,7 @@ const Main = ({quantity, placeNames}) => {
       <div className="cities__places-container container">
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
-          <b className="places__found">{quantity} places to stay in Amsterdam</b>
+          <b className="places__found">{offers.length} places to stay in Amsterdam</b>
           <form className="places__sorting" action="#" method="get">
             <span className="places__sorting-caption">Sort by</span>
             <span className="places__sorting-type" tabIndex="0">
@@ -63,9 +61,7 @@ const Main = ({quantity, placeNames}) => {
               <li className="places__option" tabIndex="0">Top rated first</li>
             </ul>
           </form>
-          <div className="cities__places-list places__list tabs__content">
-            {placeNames.map((placeName) => <PlaceCard key={placeName} placeName={placeName} placeNameClickHandler={placeNameClickHandler}/>)}
-          </div>
+          <OffersList offers={offers} handleRentHeaderClick={handleRentHeaderClick}/>
         </section>
         <div className="cities__right-section">
           <section className="cities__map map"/>
@@ -76,8 +72,19 @@ const Main = ({quantity, placeNames}) => {
 };
 
 Main.propTypes = {
-  quantity: PropTypes.number.isRequired,
-  placeNames: PropTypes.array.isRequired,
+  offers: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        name: PropTypes.string,
+        picture: PropTypes.string,
+        type: PropTypes.string,
+        rating: PropTypes.number,
+        isBookmarked: PropTypes.bool,
+        isPremium: PropTypes.bool,
+        price: PropTypes.number,
+      })
+  ).isRequired,
+  handleRentHeaderClick: PropTypes.func.isRequired
 };
 
 export default Main;
