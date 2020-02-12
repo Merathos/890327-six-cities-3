@@ -18,28 +18,26 @@ const rentOffer = {
   price: 23
 };
 
-it(`On place name press`, () => {
+it(`On place name press and mouseover`, () => {
   const handleRentHeaderClick = jest.fn();
   const onMouseEnter = jest.fn();
-  const onMouseLeave = jest.fn();
+
 
   const placeCard = shallow(
       <PlaceCard
         rentOffer={rentOffer}
         handleRentHeaderClick={handleRentHeaderClick}
         onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
+        onMouseLeave={() => {}}
       />
   );
 
   const placeNameHeader = placeCard.find(`h2`);
-  const placeCardArticle = placeCard.find(`article`);
 
   placeNameHeader.props().onClick();
-  placeCardArticle.simulate(`mouseEnter`);
-  placeCardArticle.simulate(`mouseLeave`);
+  placeCard.simulate(`mouseEnter`, onMouseEnter);
 
+  expect(onMouseEnter.mock.calls[0][0]).toBe(rentOffer);
   expect(onMouseEnter.mock.calls.length).toBe(1);
-  expect(onMouseLeave.mock.calls.length).toBe(1);
   expect(handleRentHeaderClick.mock.calls.length).toBe(1);
 });
