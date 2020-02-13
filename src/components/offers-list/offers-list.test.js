@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Main from "./main.jsx";
+import OffersList from "../offers-list/offers-list.jsx";
 
 const offers = [
   {
@@ -45,9 +45,9 @@ const offers = [
   }
 ];
 
-it(`Render Main`, () => {
+it(`Render Offers list`, () => {
   const tree = renderer
-    .create(<Main
+    .create(<OffersList
       offers={offers}
       handleRentHeaderClick={() => {}}
     />)

@@ -1,18 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
+import offers from "./mocks/offers.js";
 
-const RENT_OFFERS_QUANTITY = 420;
-
-const PLACE_NAMES = [
-  `Beautiful &amp; luxurious apartment at great location`,
-  `Wood and stone place`,
-  `Canal View Prinsengracht`,
-  `Nice, cozy, warm big bed apartment`,
-  `Wood place`
-];
+const handleRentHeaderClick = () => {};
 
 ReactDOM.render(
-    <App quantity={RENT_OFFERS_QUANTITY} placeNames={PLACE_NAMES} />,
+    <App offers={offers} handleRentHeaderClick={handleRentHeaderClick} />,
     document.querySelector(`#root`)
 );

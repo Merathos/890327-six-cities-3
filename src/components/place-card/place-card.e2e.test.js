@@ -7,19 +7,37 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-it(`On place name press`, () => {
-  const placeNameClickHandler = jest.fn();
+const rentOffer = {
+  id: `57686`,
+  name: `ex occaecat consectetur enim velit eu.`,
+  picture: `img/apartment-02.jpg`,
+  type: `Private room`,
+  rating: 2,
+  isBookmarked: false,
+  isPremium: false,
+  price: 23
+};
+
+it(`On place name press and mouseover`, () => {
+  const handleRentHeaderClick = jest.fn();
+  const onMouseEnter = jest.fn();
+
 
   const placeCard = shallow(
       <PlaceCard
-        placeName={`Cillum Lorem cillum consectetur`}
-        placeNameClickHandler={placeNameClickHandler}
+        rentOffer={rentOffer}
+        handleRentHeaderClick={handleRentHeaderClick}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={() => {}}
       />
   );
 
   const placeNameHeader = placeCard.find(`h2`);
 
   placeNameHeader.props().onClick();
+  placeCard.simulate(`mouseEnter`, onMouseEnter);
 
-  expect(placeNameClickHandler.mock.calls.length).toBe(1);
+  expect(onMouseEnter.mock.calls[0][0]).toBe(rentOffer);
+  expect(onMouseEnter.mock.calls.length).toBe(1);
+  expect(handleRentHeaderClick.mock.calls.length).toBe(1);
 });
