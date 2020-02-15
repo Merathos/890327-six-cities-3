@@ -3,14 +3,36 @@ import renderer from "react-test-renderer";
 import PlaceCard from "./place-card.jsx";
 
 const rentOffer = {
-  id: `57686`,
-  name: `ex occaecat consectetur enim velit eu.`,
-  picture: `img/apartment-02.jpg`,
-  type: `Private room`,
-  rating: 2,
-  isBookmarked: false,
-  isPremium: false,
-  price: 23
+  id: `41234`,
+  name: `Ea aute voluptate amet magna id qui`,
+  picture: `apartment-01`,
+  photos: [`room`, `room`, `room`, `room`, `room`, `room`],
+  bedroomsAmount: 1,
+  maxAdults: 2,
+  features: [
+    `Wi-Fi`,
+    `Washing machine`,
+    `Towels`,
+    `Heating`,
+    `Coffee machine`,
+    `Baby seat`,
+    `Kitchen`,
+    `Dishwasher`,
+    `Cabel TV`,
+    `Fridge`
+  ],
+  type: `Apartment`,
+  rating: 1,
+  isBookmarked: true,
+  isPremium: true,
+  price: 523,
+  hostName: `Angelina`,
+  hostAvatar: `avatar-angelina`,
+  hostStatus: `pro`,
+  description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
+                The building is green and from 18th century.
+                An independent House, strategically located between Rembrand Square and National Opera,
+                but where the bustle of the city comes to rest in this alley flowery and colorful.`
 };
 
 it(`Render place-card`, () => {

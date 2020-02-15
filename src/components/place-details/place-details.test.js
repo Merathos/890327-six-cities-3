@@ -1,11 +1,6 @@
 import React from "react";
-import Enzyme, {shallow} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-import PlaceCard from "./place-card.jsx";
-
-Enzyme.configure({
-  adapter: new Adapter(),
-});
+import renderer from "react-test-renderer";
+import PlaceDetails from "./place-details.jsx";
 
 const rentOffer = {
   id: `41234`,
@@ -40,26 +35,12 @@ const rentOffer = {
                 but where the bustle of the city comes to rest in this alley flowery and colorful.`
 };
 
-it(`On place name press and mouseover`, () => {
-  const handleRentHeaderClick = jest.fn();
-  const onMouseEnter = jest.fn();
+it(`Render place-details`, () => {
+  const tree = renderer
+    .create(<PlaceDetails
+      rentOffer={rentOffer}
+    />)
+    .toJSON();
 
-
-  const placeCard = shallow(
-      <PlaceCard
-        rentOffer={rentOffer}
-        handleRentHeaderClick={handleRentHeaderClick}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={() => {}}
-      />
-  );
-
-  const placeNameHeader = placeCard.find(`h2`);
-
-  placeNameHeader.props().onClick();
-  placeCard.simulate(`mouseEnter`, onMouseEnter);
-
-  expect(onMouseEnter.mock.calls[0][0]).toBe(rentOffer);
-  expect(onMouseEnter.mock.calls.length).toBe(1);
-  expect(handleRentHeaderClick.mock.calls.length).toBe(1);
+  expect(tree).toMatchSnapshot();
 });

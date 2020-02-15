@@ -6,7 +6,13 @@ exports[`Render place-card 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
-  
+  <div
+    className="place-card__mark"
+  >
+    <span>
+      Premium
+    </span>
+  </div>
   <div
     className="cities__image-wrapper place-card__image-wrapper"
   >
@@ -17,7 +23,7 @@ exports[`Render place-card 1`] = `
         alt="Place image"
         className="place-card__image"
         height="200"
-        src="img/apartment-02.jpg"
+        src="img/apartment-01.jpg"
         width="260"
       />
     </a>
@@ -35,7 +41,7 @@ exports[`Render place-card 1`] = `
           className="place-card__price-value"
         >
           €
-          23
+          523
         </b>
         <span
           className="place-card__price-text"
@@ -44,7 +50,7 @@ exports[`Render place-card 1`] = `
         </span>
       </div>
       <button
-        className="place-card__bookmark-button button "
+        className="place-card__bookmark-button button place-card__bookmark-button--active"
         type="button"
       >
         <svg
@@ -72,7 +78,7 @@ exports[`Render place-card 1`] = `
         <span
           style={
             Object {
-              "width": "40%",
+              "width": "20%",
             }
           }
         />
@@ -90,13 +96,13 @@ exports[`Render place-card 1`] = `
       <a
         href="#"
       >
-        ex occaecat consectetur enim velit eu.
+        Ea aute voluptate amet magna id qui
       </a>
     </h2>
     <p
       className="place-card__type"
     >
-      Private room
+      Apartment
     </p>
   </div>
 </article>

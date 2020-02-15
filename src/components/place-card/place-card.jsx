@@ -6,9 +6,7 @@ const PlaceCard = ({rentOffer, handleRentHeaderClick, onMouseEnter, onMouseLeave
 
   return (
     <article className="cities__place-card place-card"
-      onMouseLeave={() => {
-        onMouseLeave();
-      }}
+      onMouseLeave={onMouseLeave}
       onMouseEnter={() => {
         onMouseEnter(rentOffer);
       }}
@@ -16,7 +14,7 @@ const PlaceCard = ({rentOffer, handleRentHeaderClick, onMouseEnter, onMouseLeave
       {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={picture} width="260" height="200" alt="Place image"/>
+          <img className="place-card__image" src={`img/${picture}.jpg`} width="260" height="200" alt="Place image"/>
         </a>
       </div>
       <div className="place-card__info">
@@ -34,12 +32,14 @@ const PlaceCard = ({rentOffer, handleRentHeaderClick, onMouseEnter, onMouseLeave
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: (rating * 100 / 5) + `%`}}/>
+            <span style={{width: `${rating * 100 / 5}%`}}/>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2
-          onClick={handleRentHeaderClick}
+          onClick={() => {
+            handleRentHeaderClick(rentOffer);
+          }}
           className="place-card__name">
           <a href="#">{name}</a>
         </h2>
