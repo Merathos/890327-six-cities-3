@@ -6,8 +6,8 @@ const offers = [
   {
     id: `41234`,
     name: `Ea aute voluptate amet magna id qui`,
-    picture: `apartment-01`,
-    photos: [`room`, `room`, `room`, `room`, `room`, `room`],
+    picture: `img/apartment-01.jpg`,
+    photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
     bedroomsAmount: 1,
     maxAdults: 2,
     features: [
@@ -28,7 +28,7 @@ const offers = [
     isPremium: true,
     price: 523,
     hostName: `Angelina`,
-    hostAvatar: `avatar-angelina`,
+    hostAvatar: `img/avatar-angelina.jpg`,
     hostStatus: `pro`,
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
                   The building is green and from 18th century.
@@ -39,7 +39,7 @@ const offers = [
     id: `57686`,
     name: `ex occaecat consectetur enim velit eu.`,
     picture: `img/apartment-02.jpg`,
-    photos: [`room`, `room`, `room`, `room`, `room`, `room`],
+    photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
     bedroomsAmount: 1,
     maxAdults: 2,
     features: [
@@ -60,7 +60,7 @@ const offers = [
     isPremium: false,
     price: 23,
     hostName: `Angelina`,
-    hostAvatar: `avatar-angelina`,
+    hostAvatar: `img/avatar-angelina.jpg`,
     hostStatus: `pro`,
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
                   The building is green and from 18th century.
@@ -71,7 +71,7 @@ const offers = [
     id: `07980`,
     name: `Cillum Lorem cillum consectetur`,
     picture: `img/apartment-03.jpg`,
-    photos: [`room`, `room`, `room`, `room`, `room`, `room`],
+    photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
     bedroomsAmount: 1,
     maxAdults: 2,
     features: [
@@ -92,7 +92,7 @@ const offers = [
     isPremium: true,
     price: 857,
     hostName: `Angelina`,
-    hostAvatar: `avatar-angelina`,
+    hostAvatar: `img/avatar-angelina.jpg`,
     hostStatus: `pro`,
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
                   The building is green and from 18th century.
@@ -103,7 +103,7 @@ const offers = [
     id: `24356`,
     name: `quis do anim aliqua et eiusmod sit aute officia.`,
     picture: `img/apartment-01.jpg`,
-    photos: [`room`, `room`, `room`, `room`, `room`, `room`],
+    photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
     bedroomsAmount: 1,
     maxAdults: 2,
     features: [
@@ -124,7 +124,7 @@ const offers = [
     isPremium: false,
     price: 188,
     hostName: `Angelina`,
-    hostAvatar: `avatar-angelina`,
+    hostAvatar: `img/avatar-angelina.jpg`,
     hostStatus: `pro`,
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
                   The building is green and from 18th century.

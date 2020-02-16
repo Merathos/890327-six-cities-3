@@ -10,8 +10,8 @@ Enzyme.configure({
 const rentOffer = {
   id: `41234`,
   name: `Ea aute voluptate amet magna id qui`,
-  picture: `apartment-01`,
-  photos: [`room`, `room`, `room`, `room`, `room`, `room`],
+  picture: `img/apartment-01.jpg`,
+  photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
   bedroomsAmount: 1,
   maxAdults: 2,
   features: [
@@ -32,7 +32,7 @@ const rentOffer = {
   isPremium: true,
   price: 523,
   hostName: `Angelina`,
-  hostAvatar: `avatar-angelina`,
+  hostAvatar: `img/avatar-angelina.jpg`,
   hostStatus: `pro`,
   description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
                 The building is green and from 18th century.

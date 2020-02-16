@@ -2,8 +2,8 @@ export default [
   {
     id: `41324`,
     name: `Beautiful &amp; luxurious apartment at great location`,
-    picture: `apartment-01`,
-    photos: [`room`, `room`, `room`, `room`, `room`, `room`],
+    picture: `img/apartment-01.jpg`,
+    photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
     bedroomsAmount: 1,
     maxAdults: 2,
     features: [
@@ -24,7 +24,7 @@ export default [
     isPremium: false,
     price: 120,
     hostName: `Angelina`,
-    hostAvatar: `avatar-angelina`,
+    hostAvatar: `img/avatar-angelina.jpg`,
     hostStatus: `pro`,
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
                   The building is green and from 18th century.
@@ -34,8 +34,8 @@ export default [
   {
     id: `73645`,
     name: `Wood and stone place`,
-    picture: `apartment-02`,
-    photos: [`room`, `room`, `room`, `room`, `room`, `room`],
+    picture: `img/apartment-02.jpg`,
+    photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
     bedroomsAmount: 2,
     maxAdults: 3,
     features: [
@@ -54,7 +54,7 @@ export default [
     isPremium: true,
     price: 80,
     hostName: `Max`,
-    hostAvatar: `avatar-max`,
+    hostAvatar: `img/avatar-max.jpg`,
     hostStatus: ``,
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
                   An independent House, strategically located between Rembrand Square and National Opera,
@@ -63,8 +63,8 @@ export default [
   {
     id: `23455`,
     name: `Canal View Prinsengracht`,
-    picture: `apartment-03`,
-    photos: [`room`, `room`, `room`, `room`, `room`, `room`],
+    picture: `img/apartment-03.jpg`,
+    photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
     bedroomsAmount: 3,
     maxAdults: 4,
     features: [
@@ -83,7 +83,7 @@ export default [
     isPremium: false,
     price: 132,
     hostName: `Angelina`,
-    hostAvatar: `avatar-angelina`,
+    hostAvatar: `img/avatar-angelina.jpg`,
     hostStatus: ``,
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
                   The building is green and from 18th century.
@@ -92,8 +92,8 @@ export default [
   {
     id: `84578`,
     name: `Nice, cozy, warm big bed apartment`,
-    picture: `apartment-01`,
-    photos: [`room`, `room`, `room`, `room`, `room`, `room`],
+    picture: `img/apartment-01.jpg`,
+    photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
     bedroomsAmount: 4,
     maxAdults: 5,
     features: [
@@ -112,7 +112,7 @@ export default [
     isPremium: true,
     price: 180,
     hostName: `Max`,
-    hostAvatar: `avatar-max`,
+    hostAvatar: `img/avatar-max.jpg`,
     hostStatus: `pro`,
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
                   The building is green and from 18th century.

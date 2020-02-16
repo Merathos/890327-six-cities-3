@@ -30,7 +30,7 @@ class PlaceDetails extends React.PureComponent {
             <div className="property__gallery">
               {photos.map((img, i) =>
                 <div key={`${i}${img}`} className="property__image-wrapper">
-                  <img className="property__image" src={`img/${img}.jpg`} alt="Photo studio" />
+                  <img className="property__image" src={img} alt="Photo studio" />
                 </div>
               )}
             </div>
@@ -92,7 +92,7 @@ class PlaceDetails extends React.PureComponent {
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
                   <div className={`property__avatar-wrapper ${hostStatus ? `property__avatar-wrapper--pro` : ``} user__avatar-wrapper`}>
-                    <img className="property__avatar user__avatar" src={`img/${hostAvatar}.jpg`} width="74" height="74" alt="Host avatar" />
+                    <img className="property__avatar user__avatar" src={hostAvatar} width="74" height="74" alt="Host avatar" />
                   </div>
                   <span className="property__user-name">
                     {hostName}

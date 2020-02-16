@@ -125,7 +125,7 @@ exports[`Render Offers list 1`] = `
           alt="Place image"
           className="place-card__image"
           height="200"
-          src="img/img/apartment-02.jpg.jpg"
+          src="img/apartment-02.jpg"
           width="260"
         />
       </a>
@@ -230,7 +230,7 @@ exports[`Render Offers list 1`] = `
           alt="Place image"
           className="place-card__image"
           height="200"
-          src="img/img/apartment-03.jpg.jpg"
+          src="img/apartment-03.jpg"
           width="260"
         />
       </a>
@@ -329,7 +329,7 @@ exports[`Render Offers list 1`] = `
           alt="Place image"
           className="place-card__image"
           height="200"
-          src="img/img/apartment-01.jpg.jpg"
+          src="img/apartment-01.jpg"
           width="260"
         />
       </a>
