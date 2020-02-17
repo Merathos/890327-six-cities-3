@@ -3,9 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
 import offers from "./mocks/offers.js";
 
-const handleRentHeaderClick = () => {};
-
 ReactDOM.render(
-    <App offers={offers} handleRentHeaderClick={handleRentHeaderClick} />,
+    <App offers={offers} />,
     document.querySelector(`#root`)
 );

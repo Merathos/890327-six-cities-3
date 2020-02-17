@@ -6,9 +6,7 @@ const PlaceCard = ({rentOffer, handleRentHeaderClick, onMouseEnter, onMouseLeave
 
   return (
     <article className="cities__place-card place-card"
-      onMouseLeave={() => {
-        onMouseLeave();
-      }}
+      onMouseLeave={onMouseLeave}
       onMouseEnter={() => {
         onMouseEnter(rentOffer);
       }}
@@ -34,12 +32,14 @@ const PlaceCard = ({rentOffer, handleRentHeaderClick, onMouseEnter, onMouseLeave
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: (rating * 100 / 5) + `%`}}/>
+            <span style={{width: `${rating * 100 / 5}%`}}/>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2
-          onClick={handleRentHeaderClick}
+          onClick={() => {
+            handleRentHeaderClick(rentOffer);
+          }}
           className="place-card__name">
           <a href="#">{name}</a>
         </h2>

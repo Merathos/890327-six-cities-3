@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import PlaceCard from "./place-card.jsx";
+import PlaceDetails from "./place-details.jsx";
 
 const rentOffer = {
   id: `41234`,
@@ -35,13 +35,10 @@ const rentOffer = {
                 but where the bustle of the city comes to rest in this alley flowery and colorful.`
 };
 
-it(`Render place-card`, () => {
+it(`Render place-details`, () => {
   const tree = renderer
-    .create(<PlaceCard
+    .create(<PlaceDetails
       rentOffer={rentOffer}
-      handleRentHeaderClick={() => {}}
-      onMouseEnter={() => {}}
-      onMouseLeave={() => {}}
     />)
     .toJSON();
 

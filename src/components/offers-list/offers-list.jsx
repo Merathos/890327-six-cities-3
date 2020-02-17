@@ -47,11 +47,19 @@ OffersList.propTypes = {
         id: PropTypes.string,
         name: PropTypes.string,
         picture: PropTypes.string,
+        photos: PropTypes.array.isRequired,
+        bedroomsAmount: PropTypes.number.isRequired,
+        maxAdults: PropTypes.number.isRequired,
+        features: PropTypes.array.isRequired,
         type: PropTypes.string,
         rating: PropTypes.number,
         isBookmarked: PropTypes.bool,
         isPremium: PropTypes.bool,
         price: PropTypes.number,
+        hostName: PropTypes.string.isRequired,
+        hostAvatar: PropTypes.string.isRequired,
+        hostStatus: PropTypes.string,
+        description: PropTypes.string.isRequired
       })
   ).isRequired,
   handleRentHeaderClick: PropTypes.func.isRequired
