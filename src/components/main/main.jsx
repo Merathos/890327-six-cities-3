@@ -1,6 +1,7 @@
 import React from "react";
 import OffersList from "../offers-list/offers-list.jsx";
 import PropTypes from "prop-types";
+import Map from "../map/map.jsx";
 
 const Main = ({offers, handleRentHeaderClick}) => {
   return <main className="page__main page__main--index">
@@ -64,7 +65,9 @@ const Main = ({offers, handleRentHeaderClick}) => {
           <OffersList offers={offers} handleRentHeaderClick={handleRentHeaderClick}/>
         </section>
         <div className="cities__right-section">
-          <section className="cities__map map"/>
+          <section className="cities__map map">
+            <Map offers={offers} />
+          </section>
         </div>
       </div>
     </div>
@@ -75,6 +78,7 @@ Main.propTypes = {
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string,
+        coords: PropTypes.array.isRequired,
         name: PropTypes.string,
         picture: PropTypes.string,
         photos: PropTypes.array.isRequired,

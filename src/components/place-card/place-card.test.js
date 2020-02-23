@@ -4,6 +4,7 @@ import PlaceCard from "./place-card.jsx";
 
 const rentOffer = {
   id: `41234`,
+  coords: [52.3809553943508, 4.939309666406198],
   name: `Ea aute voluptate amet magna id qui`,
   picture: `img/apartment-01.jpg`,
   photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
