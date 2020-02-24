@@ -1,6 +1,6 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import App from "./app.jsx";
+import React from 'react';
+import renderer from 'react-test-renderer';
+import Map from "./map";
 
 const offers = [
   {
@@ -137,11 +137,9 @@ const offers = [
   }
 ];
 
-it(`Render App`, () => {
+it(`Should render Map correctly`, () => {
   const tree = renderer
-    .create(<App
-      offers={offers}
-    />)
+    .create(<Map offers={offers} />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

@@ -1,6 +1,7 @@
 export default [
   {
     id: `41324`,
+    coords: [52.3909553943508, 4.85309666406198],
     name: `Beautiful &amp; luxurious apartment at great location`,
     picture: `img/apartment-01.jpg`,
     photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
@@ -33,6 +34,7 @@ export default [
   },
   {
     id: `73645`,
+    coords: [52.369553943508, 4.85309666406198],
     name: `Wood and stone place`,
     picture: `img/apartment-02.jpg`,
     photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
@@ -62,6 +64,7 @@ export default [
   },
   {
     id: `23455`,
+    coords: [52.3909553943508, 4.929309666406198],
     name: `Canal View Prinsengracht`,
     picture: `img/apartment-03.jpg`,
     photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
@@ -91,6 +94,7 @@ export default [
   },
   {
     id: `84578`,
+    coords: [52.3809553943508, 4.939309666406198],
     name: `Nice, cozy, warm big bed apartment`,
     picture: `img/apartment-01.jpg`,
     photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],

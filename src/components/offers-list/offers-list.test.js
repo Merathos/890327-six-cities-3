@@ -5,6 +5,7 @@ import OffersList from "../offers-list/offers-list.jsx";
 const offers = [
   {
     id: `41234`,
+    coords: [52.3809553943508, 4.939309666406198],
     name: `Ea aute voluptate amet magna id qui`,
     picture: `img/apartment-01.jpg`,
     photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
@@ -37,6 +38,7 @@ const offers = [
   },
   {
     id: `57686`,
+    coords: [52.3809553943508, 4.939309666406198],
     name: `ex occaecat consectetur enim velit eu.`,
     picture: `img/apartment-02.jpg`,
     photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
@@ -69,6 +71,7 @@ const offers = [
   },
   {
     id: `07980`,
+    coords: [52.3809553943508, 4.939309666406198],
     name: `Cillum Lorem cillum consectetur`,
     picture: `img/apartment-03.jpg`,
     photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
@@ -101,6 +104,7 @@ const offers = [
   },
   {
     id: `24356`,
+    coords: [52.3809553943508, 4.939309666406198],
     name: `quis do anim aliqua et eiusmod sit aute officia.`,
     picture: `img/apartment-01.jpg`,
     photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],

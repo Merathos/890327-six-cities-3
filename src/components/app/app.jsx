@@ -62,6 +62,7 @@ App.propTypes = {
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string,
+        coords: PropTypes.array.isRequired,
         name: PropTypes.string,
         picture: PropTypes.string,
         photos: PropTypes.array.isRequired,
