@@ -35,9 +35,8 @@ class App extends React.PureComponent {
     } else {
       return (
         <PlaceDetails
-          rentOffer = {
-            this.state.activeCard
-          }
+          rentOffer = {this.state.activeCard}
+          handleRentHeaderClick = {this._setActiveCard}
         />
       );
     }

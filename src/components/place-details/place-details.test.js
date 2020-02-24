@@ -39,6 +39,7 @@ it(`Render place-details`, () => {
   const tree = renderer
     .create(<PlaceDetails
       rentOffer={rentOffer}
+      handleRentHeaderClick = {() => {}}
     />)
     .toJSON();
 

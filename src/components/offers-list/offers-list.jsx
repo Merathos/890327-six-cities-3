@@ -16,13 +16,14 @@ class OffersList extends React.PureComponent {
 
   render() {
     return (
-      <div className="cities__places-list places__list tabs__content">
+      <div className={this.props.isNearby ? `near-places__list places__list` : `cities__places-list places__list tabs__content`}>
         {this.props.offers.map((rentOffer) => <PlaceCard
           key={rentOffer.id}
           rentOffer={rentOffer}
           handleRentHeaderClick={this.props.handleRentHeaderClick}
           onMouseEnter={this._setActivePlaceCard}
           onMouseLeave={this._removeActivePlaceCard}
+          isNearby={this.props.isNearby}
         />)}
       </div>
     );
@@ -63,6 +64,7 @@ OffersList.propTypes = {
         description: PropTypes.string.isRequired
       })
   ).isRequired,
+  isNearby: PropTypes.bool,
   handleRentHeaderClick: PropTypes.func.isRequired
 };
 
