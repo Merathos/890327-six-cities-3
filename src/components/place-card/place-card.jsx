@@ -1,18 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const PlaceCard = ({rentOffer, handleRentHeaderClick, onMouseEnter, onMouseLeave}) => {
+const PlaceCard = ({rentOffer, handleRentHeaderClick, onMouseEnter, onMouseLeave, isNearby}) => {
   const {name, picture, type, rating, isBookmarked, isPremium, price} = rentOffer;
 
   return (
-    <article className="cities__place-card place-card"
+    <article className={isNearby ? `near-places__card place-card` : `cities__place-card place-card`}
       onMouseLeave={onMouseLeave}
       onMouseEnter={() => {
         onMouseEnter(rentOffer);
       }}
     >
       {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={isNearby ? `near-places__image-wrapper place-card__image-wrapper` : `cities__image-wrapper place-card__image-wrapper`}>
         <a href="#">
           <img className="place-card__image" src={picture} width="260" height="200" alt="Place image"/>
         </a>
@@ -60,7 +60,7 @@ PlaceCard.propTypes = {
     isPremium: PropTypes.bool,
     price: PropTypes.number,
   }).isRequired,
-
+  isNearby: PropTypes.bool,
   handleRentHeaderClick: PropTypes.func.isRequired,
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired

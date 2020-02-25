@@ -1,0 +1,256 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Review list 1`] = `
+Array [
+  <h2
+    className="reviews__title"
+  >
+    Reviews · 
+    <span
+      className="reviews__amount"
+    >
+      4
+    </span>
+  </h2>,
+  <ul
+    className="reviews__list"
+  >
+    <li
+      className="reviews__item"
+    >
+      <div
+        className="reviews__user user"
+      >
+        <div
+          className="reviews__avatar-wrapper user__avatar-wrapper"
+        >
+          <img
+            alt="Reviews avatar"
+            className="reviews__avatar user__avatar"
+            height="54"
+            src="img/avatar-max.jpg"
+            width="54"
+          />
+        </div>
+        <span
+          className="reviews__user-name"
+        >
+          Max
+        </span>
+      </div>
+      <div
+        className="reviews__info"
+      >
+        <div
+          className="reviews__rating rating"
+        >
+          <div
+            className="reviews__stars rating__stars"
+          >
+            <span
+              style={
+                Object {
+                  "width": "50%",
+                }
+              }
+            />
+            <span
+              className="visually-hidden"
+            >
+              Rating
+            </span>
+          </div>
+        </div>
+        <p
+          className="reviews__text"
+        >
+          Consectetur sit velit nulla ipsum. Sunt occaecat amet cupidatat laboris commodo in. Culpa voluptate elit amet officia veniam cillum ad. Ea magna adipisicing laboris incididunt. Laborum eu sit consequat eu nisi. Nulla ipsum ea reprehenderit enim labore do et. Irure anim laborum aute quis.
+        </p>
+        <time
+          className="reviews__time"
+          dateTime="2019-06-13"
+        >
+          June 2019
+        </time>
+      </div>
+    </li>
+    <li
+      className="reviews__item"
+    >
+      <div
+        className="reviews__user user"
+      >
+        <div
+          className="reviews__avatar-wrapper user__avatar-wrapper"
+        >
+          <img
+            alt="Reviews avatar"
+            className="reviews__avatar user__avatar"
+            height="54"
+            src="img/avatar-angelina.jpg"
+            width="54"
+          />
+        </div>
+        <span
+          className="reviews__user-name"
+        >
+          Angelina
+        </span>
+      </div>
+      <div
+        className="reviews__info"
+      >
+        <div
+          className="reviews__rating rating"
+        >
+          <div
+            className="reviews__stars rating__stars"
+          >
+            <span
+              style={
+                Object {
+                  "width": "72%",
+                }
+              }
+            />
+            <span
+              className="visually-hidden"
+            >
+              Rating
+            </span>
+          </div>
+        </div>
+        <p
+          className="reviews__text"
+        >
+          Amet anim Lorem laborum ullamco nisi labore adipisicing ut esse eu. Consectetur laboris consectetur labore ut aute do. Eiusmod sit anim adipisicing excepteur reprehenderit in. Aliqua id laborum nisi veniam dolore cillum esse Lorem non occaecat do mollit.
+        </p>
+        <time
+          className="reviews__time"
+          dateTime="2018-05-13"
+        >
+          May 2018
+        </time>
+      </div>
+    </li>
+    <li
+      className="reviews__item"
+    >
+      <div
+        className="reviews__user user"
+      >
+        <div
+          className="reviews__avatar-wrapper user__avatar-wrapper"
+        >
+          <img
+            alt="Reviews avatar"
+            className="reviews__avatar user__avatar"
+            height="54"
+            src="img/avatar-max.jpg"
+            width="54"
+          />
+        </div>
+        <span
+          className="reviews__user-name"
+        >
+          Max
+        </span>
+      </div>
+      <div
+        className="reviews__info"
+      >
+        <div
+          className="reviews__rating rating"
+        >
+          <div
+            className="reviews__stars rating__stars"
+          >
+            <span
+              style={
+                Object {
+                  "width": "94%",
+                }
+              }
+            />
+            <span
+              className="visually-hidden"
+            >
+              Rating
+            </span>
+          </div>
+        </div>
+        <p
+          className="reviews__text"
+        >
+          Aliqua deserunt quis eu culpa nulla. Dolor eiusmod aliquip nulla commodo excepteur ut labore Lorem duis consequat dolor ex aute cillum. Non nisi do eu ex mollit sunt quis cillum fugiat velit et. Aliqua magna excepteur minim adipisicing aute consectetur exercitation laboris laborum sint pariatur in esse consectetur. Elit sit incididunt pariatur est eiusmod non anim deserunt laboris incididunt minim reprehenderit.
+        </p>
+        <time
+          className="reviews__time"
+          dateTime="2017-04-13"
+        >
+          April 2017
+        </time>
+      </div>
+    </li>
+    <li
+      className="reviews__item"
+    >
+      <div
+        className="reviews__user user"
+      >
+        <div
+          className="reviews__avatar-wrapper user__avatar-wrapper"
+        >
+          <img
+            alt="Reviews avatar"
+            className="reviews__avatar user__avatar"
+            height="54"
+            src="img/avatar-angelina.jpg"
+            width="54"
+          />
+        </div>
+        <span
+          className="reviews__user-name"
+        >
+          Angelina
+        </span>
+      </div>
+      <div
+        className="reviews__info"
+      >
+        <div
+          className="reviews__rating rating"
+        >
+          <div
+            className="reviews__stars rating__stars"
+          >
+            <span
+              style={
+                Object {
+                  "width": "116%",
+                }
+              }
+            />
+            <span
+              className="visually-hidden"
+            >
+              Rating
+            </span>
+          </div>
+        </div>
+        <p
+          className="reviews__text"
+        >
+          Velit ipsum voluptate consectetur eiusmod excepteur aliqua et cillum laboris anim nisi dolor. Ex esse id occaecat ex consequat duis sint duis excepteur. Fugiat est nisi dolor officia nisi id. Irure ullamco do ea eiusmod fugiat enim fugiat laborum ea ipsum cupidatat consectetur. Consectetur consequat esse velit tempor commodo ea labore.
+        </p>
+        <time
+          className="reviews__time"
+          dateTime="2016-03-13"
+        >
+          March 2016
+        </time>
+      </div>
+    </li>
+  </ul>,
+]
+`;
