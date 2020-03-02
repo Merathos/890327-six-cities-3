@@ -70,7 +70,7 @@ Main.propTypes = {
 
 const mapStateToProps = (state) => ({
   currentCity: state.currentCity,
-  currentCityOffers: state.offers.filter((offer) => offer.city === state.currentCity.name)[0].offers
+  currentCityOffers: state.offers
 });
 
 export {Main};

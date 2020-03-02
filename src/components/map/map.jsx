@@ -86,7 +86,7 @@ Map.propTypes = {
         hostStatus: PropTypes.string,
         description: PropTypes.string.isRequired
       })).isRequired,
-  cityCoords: PropTypes.array.isRequired
+  cityCoords: PropTypes.array
 };
 
 export default Map;

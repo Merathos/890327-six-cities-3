@@ -1,8 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {CitiesList} from "./cities-list";
+import CitiesList from "./cities-list";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
+import offers from "../../__mocks__/offers.js";
 
 const mockStore = configureStore([]);
 
@@ -35,9 +36,13 @@ const cities = [
 
 it(`Should render Cities List`, () => {
   const store = mockStore({
-    currentCity: {name: `Paris`, coords: [4134, 123123]},
     cities,
-    onCityClick: () => {}
+    currentCity: {
+      name: `Paris`,
+      coords: [51.38333, 4.9]
+    },
+    allOffers: offers,
+    offers: offers.filter((offer) => offer.city === `Paris`)[0].offers
   });
 
   const tree = renderer

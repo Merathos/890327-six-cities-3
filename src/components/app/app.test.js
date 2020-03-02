@@ -9,11 +9,13 @@ const mockStore = configureStore([]);
 
 it(`Render App`, () => {
   const store = mockStore({
-    currentCityOffers: offers,
+    cities: offers.map((offer) => ({name: offer.city, coords: offer.cityCoordinates})),
     currentCity: {
       name: `Paris`,
       coords: [51.38333, 4.9]
-    }
+    },
+    allOffers: offers,
+    offers: offers.filter((offer) => offer.city === `Paris`)[0].offers
   });
 
   const tree = renderer

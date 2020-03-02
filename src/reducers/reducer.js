@@ -7,13 +7,16 @@ const initialState = {
     name: `Paris`,
     coords: [51.38333, 4.9]
   },
-  offers
+  allOffers: offers,
+  offers: offers.filter((offer) => offer.city === `Paris`)[0].offers
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_CITY:
-      return {...state, currentCity: action.payload};
+      return {...state,
+        currentCity: action.payload,
+        offers: state.allOffers.filter((offer) => offer.city === action.payload.name)[0].offers};
     default:
       return state;
   }
