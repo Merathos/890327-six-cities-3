@@ -2,39 +2,65 @@ import React from "react";
 import PropTypes from "prop-types";
 import leaflet from "leaflet";
 
-const CITY = [52.38333, 4.9];
-
-class Map extends React.PureComponent {
+class Map extends React.Component {
+  constructor(props) {
+    super(props);
+    this._ref = React.createRef();
+  }
 
   componentDidMount() {
+    this._renderMap();
+  }
+
+  componentDidUpdate() {
+    this._renderMap();
+  }
+
+  _renderMap() {
+    const {cityCoords, offers} = this.props;
+
+    if (this.map) {
+      this.map.remove();
+      this.map = null;
+    }
+
+    if (offers.length === 0) {
+      return;
+    }
+
     const icon = leaflet.icon({
       iconUrl: `img/pin.svg`,
       iconSize: [30, 40]
     });
 
-    const map = leaflet.map(`map`, {
-      center: CITY,
-      zoom: 12,
+    const zoom = 12;
+    this.map = leaflet.map(this._ref.current, {
+      center: cityCoords,
+      zoom,
       zoomControl: false,
       marker: true
     });
-    map.setView(CITY, 12);
+
+    this.map.setView(cityCoords, zoom);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
         attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
       })
-      .addTo(map);
+      .addTo(this.map);
 
-    this.props.offers.forEach((offer) => {
-      leaflet.marker(offer.coords, {icon})
-      .addTo(map);
-    });
+    if (offers.length) {
+      offers.map((offer) => {
+        leaflet
+          .marker(offer.coords, {icon})
+          .addTo(this.map);
+      });
+    }
   }
 
   render() {
     return (
-      <div id="map" style={{height: `100%`}}/>
+      <div id="map" ref={this._ref} style={{width: `100%`, height: `100%`}}></div>
     );
   }
 }
@@ -59,7 +85,8 @@ Map.propTypes = {
         hostAvatar: PropTypes.string.isRequired,
         hostStatus: PropTypes.string,
         description: PropTypes.string.isRequired
-      })).isRequired
+      })).isRequired,
+  cityCoords: PropTypes.array.isRequired
 };
 
 export default Map;
