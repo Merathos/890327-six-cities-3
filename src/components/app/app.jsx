@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import Main from "../main/main.jsx";
 import PlaceDetails from "../place-details/place-details.jsx";
@@ -22,13 +21,11 @@ class App extends React.PureComponent {
   }
 
   _renderApp() {
-    const {offers} = this.props;
     const {activeCard} = this.state;
 
     if (activeCard === null) {
       return (
         <Main
-          offers = {offers}
           handleRentHeaderClick = {this._setActiveCard}
         />
       );
@@ -56,29 +53,5 @@ class App extends React.PureComponent {
     );
   }
 }
-
-App.propTypes = {
-  offers: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string,
-        coords: PropTypes.array.isRequired,
-        name: PropTypes.string,
-        picture: PropTypes.string,
-        photos: PropTypes.array.isRequired,
-        bedroomsAmount: PropTypes.number.isRequired,
-        maxAdults: PropTypes.number.isRequired,
-        features: PropTypes.array.isRequired,
-        type: PropTypes.string,
-        rating: PropTypes.number,
-        isBookmarked: PropTypes.bool,
-        isPremium: PropTypes.bool,
-        price: PropTypes.number,
-        hostName: PropTypes.string.isRequired,
-        hostAvatar: PropTypes.string.isRequired,
-        hostStatus: PropTypes.string,
-        description: PropTypes.string.isRequired
-      })
-  ).isRequired
-};
 
 export default App;

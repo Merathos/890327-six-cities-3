@@ -161,13 +161,13 @@ class PlaceDetails extends React.PureComponent {
             </div>
           </div>
           <section className="property__map map">
-            <Map offers = {nearbyOffers.slice(0, 3)} />
+            <Map offers = {nearbyOffers[0].offers.slice(0, 3)} cityCoords={nearbyOffers[0].cityCoordinates} />
           </section>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <OffersList offers={nearbyOffers.slice(0, 3)} handleRentHeaderClick={this.props.handleRentHeaderClick} isNearby = {true} />
+            <OffersList offers={nearbyOffers[0].offers.slice(0, 3)} handleRentHeaderClick={this.props.handleRentHeaderClick} isNearby = {true} />
           </section>
         </div>
       </main>
