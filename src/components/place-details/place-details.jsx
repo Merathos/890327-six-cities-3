@@ -13,7 +13,7 @@ class PlaceDetails extends React.PureComponent {
 
   render() {
     const {
-      name,
+      title,
       photos,
       bedroomsAmount,
       maxAdults,
@@ -50,7 +50,7 @@ class PlaceDetails extends React.PureComponent {
                 </div> : ``}
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  {name}
+                  {title}
                 </h1>
                 <button className="property__bookmark-button button" type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
@@ -161,13 +161,13 @@ class PlaceDetails extends React.PureComponent {
             </div>
           </div>
           <section className="property__map map">
-            <Map offers = {nearbyOffers[0].offers.slice(0, 3)} cityCoords={nearbyOffers[0].cityCoordinates} />
+            <Map offersCoords = {nearbyOffers.slice(0, 3).map((offer)=>offer.coords)} city={nearbyOffers[0].city} />
           </section>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <OffersList offers={nearbyOffers[0].offers.slice(0, 3)} handleRentHeaderClick={this.props.handleRentHeaderClick} isNearby = {true} />
+            <OffersList offers={nearbyOffers.slice(0, 3)} handleRentHeaderClick={this.props.handleRentHeaderClick} isNearby = {true} />
           </section>
         </div>
       </main>
@@ -178,8 +178,7 @@ class PlaceDetails extends React.PureComponent {
 PlaceDetails.propTypes = {
   rentOffer: PropTypes.shape({
     id: PropTypes.string,
-    name: PropTypes.string,
-    picture: PropTypes.string,
+    title: PropTypes.string,
     photos: PropTypes.array.isRequired,
     bedroomsAmount: PropTypes.number.isRequired,
     maxAdults: PropTypes.number.isRequired,

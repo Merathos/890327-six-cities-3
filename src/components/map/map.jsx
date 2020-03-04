@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import leaflet from "leaflet";
+import {connect} from "react-redux";
 
 class Map extends React.Component {
   constructor(props) {
@@ -17,15 +18,10 @@ class Map extends React.Component {
   }
 
   _renderMap() {
-    const {cityCoords, offers} = this.props;
+    const {city, offersCoords, hoveredCard} = this.props;
 
-    if (this.map) {
-      this.map.remove();
-      this.map = null;
-    }
-
-    if (offers.length === 0) {
-      return;
+    if (!this.markers) {
+      this.markers = [];
     }
 
     const icon = leaflet.icon({
@@ -33,15 +29,23 @@ class Map extends React.Component {
       iconSize: [30, 40]
     });
 
-    const zoom = 12;
-    this.map = leaflet.map(this._ref.current, {
-      center: cityCoords,
-      zoom,
-      zoomControl: false,
-      marker: true
+    const activeIcon = leaflet.icon({
+      iconUrl: `img/pin-active.svg`,
+      iconSize: [30, 40]
     });
 
-    this.map.setView(cityCoords, zoom);
+    const zoom = 12;
+
+    if (!this.map) {
+      this.map = leaflet.map(this._ref.current, {
+        center: city.coords,
+        zoom,
+        zoomControl: false,
+        marker: true
+      });
+    }
+
+    this.map.setView(city.coords, zoom);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -49,14 +53,20 @@ class Map extends React.Component {
       })
       .addTo(this.map);
 
-    if (offers.length) {
-      offers.map((offer) => {
-        leaflet
-          .marker(offer.coords, {icon})
+    this.markers.forEach((marker)=> this.map.removeLayer(marker));
+
+    this.markers = [];
+
+    if (offersCoords.length) {
+      offersCoords.map((coord)=>{
+        const marker = leaflet
+          .marker(coord, coord === hoveredCard.coords ? {activeIcon} : {icon})
           .addTo(this.map);
+        this.markers.push(marker);
       });
     }
   }
+
 
   render() {
     return (
@@ -66,27 +76,18 @@ class Map extends React.Component {
 }
 
 Map.propTypes = {
-  offers: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string,
-        coords: PropTypes.array.isRequired,
-        name: PropTypes.string,
-        picture: PropTypes.string,
-        photos: PropTypes.array.isRequired,
-        bedroomsAmount: PropTypes.number.isRequired,
-        maxAdults: PropTypes.number.isRequired,
-        features: PropTypes.array.isRequired,
-        type: PropTypes.string,
-        rating: PropTypes.number,
-        isBookmarked: PropTypes.bool,
-        isPremium: PropTypes.bool,
-        price: PropTypes.number,
-        hostName: PropTypes.string.isRequired,
-        hostAvatar: PropTypes.string.isRequired,
-        hostStatus: PropTypes.string,
-        description: PropTypes.string.isRequired
-      })).isRequired,
-  cityCoords: PropTypes.array
+  city: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    coords: PropTypes.array.isRequired,
+    zoom: PropTypes.number.isRequired
+  }),
+  offersCoords: PropTypes.array.isRequired,
+  hoveredCard: PropTypes.object
 };
 
-export default Map;
+const mapStateToProps = (state) => ({
+  hoveredCard: state.hoveredCard
+});
+
+export {Map};
+export default connect(mapStateToProps)(Map);
