@@ -67,7 +67,7 @@ it(`On place name press`, () => {
   const handleRentHeaderClick = jest.fn();
 
   const placeCard = shallow(
-      <Provider srtoe={store}>
+      <Provider store={store}>
         <PlaceCard
           rentOffer={offers[0]}
           handleRentHeaderClick={handleRentHeaderClick}
