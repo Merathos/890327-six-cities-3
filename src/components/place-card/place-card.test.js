@@ -40,6 +40,10 @@ const cities = [
   },
 ];
 
+const hoveredCard = {
+  coords: [123123, 123123]
+};
+
 it(`Render place-card`, () => {
   const store = mockStore({
     cities,
@@ -50,8 +54,9 @@ it(`Render place-card`, () => {
     },
     allOffers: offers,
     offersByCity: offers.filter((offer) => offer.city.name === `Amsterdam`),
+    offersByCitySorted: offers.filter((offer) => offer.city.name === `Amsterdam`),
     currentSortType: `Popular`,
-    hoveredCard: {}
+    hoveredCard
   });
 
   const tree = renderer

@@ -41,6 +41,10 @@ const cities = [
   },
 ];
 
+const hoveredCard = {
+  coords: [123123, 123123]
+};
+
 Enzyme.configure({
   adapter: new Adapter(),
 });
@@ -55,8 +59,9 @@ it(`On place name press`, () => {
     },
     allOffers: offers,
     offersByCity: offers.filter((offer) => offer.city.name === `Amsterdam`),
+    offersByCitySorted: offers.filter((offer) => offer.city.name === `Amsterdam`),
     currentSortType: `Popular`,
-    hoveredCard: {}
+    hoveredCard
   });
 
   const handleRentHeaderClick = jest.fn();

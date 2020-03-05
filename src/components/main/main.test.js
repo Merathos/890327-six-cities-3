@@ -8,6 +8,10 @@ import uniqBy from 'lodash/uniqBy';
 
 const mockStore = configureStore([]);
 
+const hoveredCard = {
+  coords: [123123, 123123]
+};
+
 it(`Render Main`, () => {
   const store = mockStore({
     cities: uniqBy(offers.map((offer) => ({name: offer.city.name, coords: offer.city.coords, zoom: offer.city.zoom})), `name`),
@@ -18,8 +22,9 @@ it(`Render Main`, () => {
     },
     allOffers: offers,
     offersByCity: offers.filter((offer) => offer.city.name === `Amsterdam`),
+    offersByCitySorted: offers.filter((offer) => offer.city.name === `Amsterdam`),
     currentSortType: `Popular`,
-    hoveredCard: {}
+    hoveredCard
   });
 
   const tree = renderer

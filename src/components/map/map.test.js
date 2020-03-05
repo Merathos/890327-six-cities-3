@@ -54,6 +54,10 @@ const cities = [
   },
 ];
 
+const hoveredCard = {
+  coords: [123123, 123123]
+};
+
 it(`Should render Map correctly`, () => {
   const store = mockStore({
     cities,
@@ -64,13 +68,14 @@ it(`Should render Map correctly`, () => {
     },
     allOffers: offers,
     offersByCity: offers.filter((offer) => offer.city.name === `Amsterdam`),
+    offersByCitySorted: offers.filter((offer) => offer.city.name === `Amsterdam`),
     currentSortType: `Popular`,
-    hoveredCard: {}
+    hoveredCard
   });
 
   const tree = renderer
     .create(
-        <Provider srtoe={store}>
+        <Provider store={store}>
           <Map offersCoords={offersCoords} city={city} />
         </Provider>
     )

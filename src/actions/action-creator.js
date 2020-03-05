@@ -20,7 +20,7 @@ const ActionCreator = {
   }),
   removeHoveredCard: () => ({
     type: ActionType.REMOVE_HOVERED_CARD,
-    payload: null
+    payload: {}
   })
 };
 

@@ -62,7 +62,7 @@ Main.propTypes = {
 
 const mapStateToProps = (state) => ({
   currentCity: state.currentCity,
-  offers: state.offersByCity
+  offers: state.offersByCitySorted
 });
 
 export {Main};

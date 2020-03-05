@@ -13,6 +13,7 @@ it(`Reducer without additional parameters should return initial state`, () => {
     },
     allOffers: offers,
     offersByCity: offers.filter((offer) => offer.city.name === `Amsterdam`),
+    offersByCitySorted: offers.filter((offer) => offer.city.name === `Amsterdam`),
     currentSortType: `Popular`,
     hoveredCard: {}
   });
@@ -28,6 +29,7 @@ it(`Reducer should change city by a given value`, () => {
     },
     allOffers: offers,
     offersByCity: offers.filter((offer) => offer.city.name === `Amsterdam`),
+    offersByCitySorted: offers.filter((offer) => offer.city.name === `Amsterdam`),
     currentSortType: `Popular`,
     hoveredCard: {}
   }, {
@@ -46,6 +48,7 @@ it(`Reducer should change city by a given value`, () => {
     },
     allOffers: offers,
     offersByCity: offers.filter((offer) => offer.city.name === `Paris`),
+    offersByCitySorted: offers.filter((offer) => offer.city.name === `Paris`),
     currentSortType: `Popular`,
     hoveredCard: {}
   });

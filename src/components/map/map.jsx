@@ -10,20 +10,48 @@ class Map extends React.Component {
   }
 
   componentDidMount() {
-    this._renderMap();
+    this._initCity();
   }
 
   componentDidUpdate() {
-    this._renderMap();
+    this._markersLayer.clearLayers();
+    this.map.setView(this.props.city.coords, this.props.city.zoom);
+    this._addMarkers();
   }
 
-  _renderMap() {
-    const {city, offersCoords, hoveredCard} = this.props;
+  _getIcon() {
+    return leaflet.icon({
+      iconUrl: `img/pin.svg`,
+      iconSize: [30, 40],
+    });
+  }
 
-    if (!this.markers) {
-      this.markers = [];
-    }
+  _getActiveIcon() {
+    return leaflet.icon({
+      iconUrl: `img/pin-active.svg`,
+      iconSize: [30, 40],
+    });
+  }
 
+  _initCity() {
+    const {city} = this.props;
+
+    this.map = leaflet.map(this._ref.current, {
+      center: city.coords,
+      zoom: city.zoom,
+      zoomControl: false,
+      marker: true
+    });
+
+    this.map.setView(city.coords, city.zoom);
+    leaflet.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
+      attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
+    }).addTo(this.map);
+
+    this._addMarkers();
+  }
+
+  _addMarkers() {
     const icon = leaflet.icon({
       iconUrl: `img/pin.svg`,
       iconSize: [30, 40]
@@ -34,37 +62,14 @@ class Map extends React.Component {
       iconSize: [30, 40]
     });
 
-    const zoom = 12;
+    const {offersCoords, hoveredCard} = this.props;
+    this._markersLayer = leaflet.layerGroup().addTo(this.map);
 
-    if (!this.map) {
-      this.map = leaflet.map(this._ref.current, {
-        center: city.coords,
-        zoom,
-        zoomControl: false,
-        marker: true
-      });
-    }
-
-    this.map.setView(city.coords, zoom);
-
-    leaflet
-      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-        attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-      })
-      .addTo(this.map);
-
-    this.markers.forEach((marker)=> this.map.removeLayer(marker));
-
-    this.markers = [];
-
-    if (offersCoords.length) {
-      offersCoords.map((coord)=>{
-        const marker = leaflet
-          .marker(coord, coord === hoveredCard.coords ? {activeIcon} : {icon})
-          .addTo(this.map);
-        this.markers.push(marker);
-      });
-    }
+    offersCoords.map((coords) => {
+      leaflet
+        .marker(coords, coords === hoveredCard.coords ? {activeIcon} : {icon})
+        .addTo(this._markersLayer);
+    });
   }
 
 

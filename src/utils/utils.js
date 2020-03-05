@@ -5,18 +5,18 @@ const SORT_TYPES = {
   TOP_RATED: `Top rated first`
 };
 
-export const sortOffers = (sortType, offers, defaultOrder) => {
+export const sortOffers = (sortType, offers) => {
   switch (sortType) {
     case SORT_TYPES.PRICE_FROM_LOW:
-      return offers.sort((a, b) => a.price - b.price);
+      return offers.slice().sort((a, b) => a.price - b.price);
 
     case SORT_TYPES.PRICE_FROM_HIGH:
-      return offers.sort((a, b) => b.price - a.price);
+      return offers.slice().sort((a, b) => b.price - a.price);
 
     case SORT_TYPES.TOP_RATED:
-      return offers.sort((a, b) => b.rating - a.rating);
+      return offers.slice().sort((a, b) => b.rating - a.rating);
 
     default:
-      return defaultOrder;
+      return offers;
   }
 };

@@ -12,6 +12,7 @@ const initialState = {
   },
   allOffers: offers,
   offersByCity: offers.filter((offer) => offer.city.name === `Amsterdam`),
+  offersByCitySorted: offers.filter((offer) => offer.city.name === `Amsterdam`),
   currentSortType: `Popular`,
   hoveredCard: {}
 };
@@ -21,11 +22,13 @@ const reducer = (state = initialState, action) => {
     case ActionType.CHANGE_CITY:
       return {...state,
         currentCity: action.payload,
-        offersByCity: state.allOffers.filter((offer) => offer.city.name === action.payload.name)};
+        offersByCity: state.allOffers.filter((offer) => offer.city.name === action.payload.name),
+        offersByCitySorted: state.allOffers.filter((offer) => offer.city.name === action.payload.name)
+      };
     case ActionType.CHANGE_SORT_TYPE:
       return {...state,
         currentSortType: action.payload,
-        offersByCity: sortOffers(action.payload, state.offersByCity, state.allOffers.filter((offer) => offer.city.name === state.currentCity.name))
+        offersByCitySorted: sortOffers(action.payload, state.offersByCity)
       };
     case ActionType.SET_HOVERED_CARD:
       return {...state,
@@ -33,7 +36,7 @@ const reducer = (state = initialState, action) => {
       };
     case ActionType.REMOVE_HOVERED_CARD:
       return {...state,
-        hoveredCard: {}
+        hoveredCard: action.payload
       };
     default:
       return state;
