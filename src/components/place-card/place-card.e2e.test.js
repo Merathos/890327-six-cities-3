@@ -1,5 +1,5 @@
 import React from "react";
-import Enzyme, {shallow} from "enzyme";
+import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import PlaceCard from "./place-card.jsx";
 import offers from "../../__mocks__/offers.js";
@@ -66,7 +66,7 @@ it(`On place name press`, () => {
 
   const handleRentHeaderClick = jest.fn();
 
-  const placeCard = shallow(
+  const placeCard = mount(
       <Provider store={store}>
         <PlaceCard
           rentOffer={offers[0]}
