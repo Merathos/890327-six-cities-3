@@ -4,18 +4,27 @@ import App from "./app.jsx";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
 import offers from "../../__mocks__/offers.js";
+import uniqBy from 'lodash/uniqBy';
 
 const mockStore = configureStore([]);
 
+const hoveredCard = {
+  coords: [123123, 123123]
+};
+
 it(`Render App`, () => {
   const store = mockStore({
-    cities: offers.map((offer) => ({name: offer.city, coords: offer.cityCoordinates})),
+    cities: uniqBy(offers.map((offer) => ({name: offer.city.name, coords: offer.city.coords, zoom: offer.city.zoom})), `name`),
     currentCity: {
-      name: `Paris`,
-      coords: [51.38333, 4.9]
+      name: `Amsterdam`,
+      coords: [52.370216, 4.895168],
+      zoom: 10
     },
     allOffers: offers,
-    offers: offers.filter((offer) => offer.city === `Paris`)[0].offers
+    offersByCity: offers.filter((offer) => offer.city.name === `Amsterdam`),
+    offersByCitySorted: offers.filter((offer) => offer.city.name === `Amsterdam`),
+    currentSortType: `Popular`,
+    hoveredCard
   });
 
   const tree = renderer

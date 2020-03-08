@@ -21,4 +21,10 @@ leaflet.tileLayer = () => {
   };
 };
 
+leaflet.layerGroup = () => {
+  return {
+    addTo: () => {},
+  };
+};
+
 module.exports = leaflet;

@@ -1,49 +1,73 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import PlaceCard from "./place-card.jsx";
+import offers from "../../__mocks__/offers.js";
+import configureStore from "redux-mock-store";
+import {Provider} from "react-redux";
 
-const rentOffer = {
-  id: `41234`,
-  coords: [52.3809553943508, 4.939309666406198],
-  name: `Ea aute voluptate amet magna id qui`,
-  picture: `img/apartment-01.jpg`,
-  photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
-  bedroomsAmount: 1,
-  maxAdults: 2,
-  features: [
-    `Wi-Fi`,
-    `Washing machine`,
-    `Towels`,
-    `Heating`,
-    `Coffee machine`,
-    `Baby seat`,
-    `Kitchen`,
-    `Dishwasher`,
-    `Cabel TV`,
-    `Fridge`
-  ],
-  type: `Apartment`,
-  rating: 1,
-  isBookmarked: true,
-  isPremium: true,
-  price: 523,
-  hostName: `Angelina`,
-  hostAvatar: `img/avatar-angelina.jpg`,
-  hostStatus: `pro`,
-  description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
-                The building is green and from 18th century.
-                An independent House, strategically located between Rembrand Square and National Opera,
-                but where the bustle of the city comes to rest in this alley flowery and colorful.`
+const mockStore = configureStore([]);
+
+const cities = [
+  {
+    name: `Paris`,
+    coords: [4134, 123123],
+    zoom: 10
+  },
+  {
+    name: `Paris`,
+    coords: [4134, 123123],
+    zoom: 10
+  },
+  {
+    name: `Paris`,
+    coords: [4134, 123123],
+    zoom: 10
+  },
+  {
+    name: `Paris`,
+    coords: [4134, 123123],
+    zoom: 10
+  },
+  {
+    name: `Paris`,
+    coords: [4134, 123123],
+    zoom: 10
+  },
+  {
+    name: `Paris`,
+    coords: [4134, 123123],
+    zoom: 10
+  },
+];
+
+const hoveredCard = {
+  coords: [123123, 123123]
 };
 
 it(`Render place-card`, () => {
+  const store = mockStore({
+    cities,
+    currentCity: {
+      name: `Amsterdam`,
+      coords: [52.370216, 4.895168],
+      zoom: 10
+    },
+    allOffers: offers,
+    offersByCity: offers.filter((offer) => offer.city.name === `Amsterdam`),
+    offersByCitySorted: offers.filter((offer) => offer.city.name === `Amsterdam`),
+    currentSortType: `Popular`,
+    hoveredCard
+  });
+
   const tree = renderer
-    .create(<PlaceCard
-      rentOffer={rentOffer}
-      handleRentHeaderClick={() => {}}
-      onMouseEnter={() => {}}
-      onMouseLeave={() => {}}
-    />)
+    .create(
+        <Provider store={store}>
+          <PlaceCard
+            rentOffer={offers[0]}
+            handleRentHeaderClick={() => {}}
+          />
+        </Provider>
+    )
     .toJSON();
 
   expect(tree).toMatchSnapshot();

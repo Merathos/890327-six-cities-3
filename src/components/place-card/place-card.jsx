@@ -1,20 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../actions/action-creator.js";
 
 const PlaceCard = ({rentOffer, handleRentHeaderClick, onMouseEnter, onMouseLeave, isNearby}) => {
-  const {name, picture, type, rating, isBookmarked, isPremium, price} = rentOffer;
+  const {title, previewImg, type, rating, isBookmarked, isPremium, price} = rentOffer;
 
   return (
     <article className={isNearby ? `near-places__card place-card` : `cities__place-card place-card`}
-      onMouseLeave={onMouseLeave}
-      onMouseEnter={() => {
-        onMouseEnter(rentOffer);
-      }}
+      onMouseEnter={() => onMouseEnter(rentOffer)}
+      onMouseLeave={() => onMouseLeave()}
     >
       {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
       <div className={isNearby ? `near-places__image-wrapper place-card__image-wrapper` : `cities__image-wrapper place-card__image-wrapper`}>
         <a href="#">
-          <img className="place-card__image" src={picture} width="260" height="200" alt="Place image"/>
+          <img className="place-card__image" src={previewImg} width="260" height="200" alt="Place image"/>
         </a>
       </div>
       <div className="place-card__info">
@@ -41,7 +41,7 @@ const PlaceCard = ({rentOffer, handleRentHeaderClick, onMouseEnter, onMouseLeave
             handleRentHeaderClick(rentOffer);
           }}
           className="place-card__name">
-          <a href="#">{name}</a>
+          <a href="#">{title}</a>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -52,8 +52,8 @@ const PlaceCard = ({rentOffer, handleRentHeaderClick, onMouseEnter, onMouseLeave
 PlaceCard.propTypes = {
   rentOffer: PropTypes.shape({
     id: PropTypes.string,
-    name: PropTypes.string,
-    picture: PropTypes.string,
+    title: PropTypes.string,
+    previewImg: PropTypes.string,
     type: PropTypes.string,
     rating: PropTypes.number,
     isBookmarked: PropTypes.bool,
@@ -66,4 +66,10 @@ PlaceCard.propTypes = {
   onMouseLeave: PropTypes.func.isRequired
 };
 
-export default PlaceCard;
+const mapDispatchToProps = {
+  onMouseEnter: ActionCreator.setHoveredCard,
+  onMouseLeave: ActionCreator.removeHoveredCard
+};
+
+export {PlaceCard};
+export default connect(null, mapDispatchToProps)(PlaceCard);

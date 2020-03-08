@@ -1,145 +1,84 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Map from "./map";
+import configureStore from "redux-mock-store";
+import {Provider} from "react-redux";
+import offers from "../../__mocks__/offers.js";
 
-const offers = [
-  {
-    id: `41234`,
-    coords: [52.3809553943508, 4.939309666406198],
-    name: `Ea aute voluptate amet magna id qui`,
-    picture: `img/apartment-01.jpg`,
-    photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
-    bedroomsAmount: 1,
-    maxAdults: 2,
-    features: [
-      `Wi-Fi`,
-      `Washing machine`,
-      `Towels`,
-      `Heating`,
-      `Coffee machine`,
-      `Baby seat`,
-      `Kitchen`,
-      `Dishwasher`,
-      `Cabel TV`,
-      `Fridge`
-    ],
-    type: `Apartment`,
-    rating: 1,
-    isBookmarked: true,
-    isPremium: true,
-    price: 523,
-    hostName: `Angelina`,
-    hostAvatar: `img/avatar-angelina.jpg`,
-    hostStatus: `pro`,
-    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
-                  The building is green and from 18th century.
-                  An independent House, strategically located between Rembrand Square and National Opera,
-                  but where the bustle of the city comes to rest in this alley flowery and colorful.`
-  },
-  {
-    id: `57686`,
-    coords: [52.3809553943508, 4.939309666406198],
-    name: `ex occaecat consectetur enim velit eu.`,
-    picture: `img/apartment-02.jpg`,
-    photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
-    bedroomsAmount: 1,
-    maxAdults: 2,
-    features: [
-      `Wi-Fi`,
-      `Washing machine`,
-      `Towels`,
-      `Heating`,
-      `Coffee machine`,
-      `Baby seat`,
-      `Kitchen`,
-      `Dishwasher`,
-      `Cabel TV`,
-      `Fridge`
-    ],
-    type: `Private room`,
-    rating: 2,
-    isBookmarked: false,
-    isPremium: false,
-    price: 23,
-    hostName: `Angelina`,
-    hostAvatar: `img/avatar-angelina.jpg`,
-    hostStatus: `pro`,
-    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
-                  The building is green and from 18th century.
-                  An independent House, strategically located between Rembrand Square and National Opera,
-                  but where the bustle of the city comes to rest in this alley flowery and colorful.`
-  },
-  {
-    id: `07980`,
-    coords: [52.3809553943508, 4.939309666406198],
-    name: `Cillum Lorem cillum consectetur`,
-    picture: `img/apartment-03.jpg`,
-    photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
-    bedroomsAmount: 1,
-    maxAdults: 2,
-    features: [
-      `Wi-Fi`,
-      `Washing machine`,
-      `Towels`,
-      `Heating`,
-      `Coffee machine`,
-      `Baby seat`,
-      `Kitchen`,
-      `Dishwasher`,
-      `Cabel TV`,
-      `Fridge`
-    ],
-    type: `Apartment`,
-    rating: 3,
-    isBookmarked: false,
-    isPremium: true,
-    price: 857,
-    hostName: `Angelina`,
-    hostAvatar: `img/avatar-angelina.jpg`,
-    hostStatus: `pro`,
-    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
-                  The building is green and from 18th century.
-                  An independent House, strategically located between Rembrand Square and National Opera,
-                  but where the bustle of the city comes to rest in this alley flowery and colorful.`
-  },
-  {
-    id: `24356`,
-    coords: [52.3809553943508, 4.939309666406198],
-    name: `quis do anim aliqua et eiusmod sit aute officia.`,
-    picture: `img/apartment-01.jpg`,
-    photos: [`img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`, `img/room.jpg`],
-    bedroomsAmount: 1,
-    maxAdults: 2,
-    features: [
-      `Wi-Fi`,
-      `Washing machine`,
-      `Towels`,
-      `Heating`,
-      `Coffee machine`,
-      `Baby seat`,
-      `Kitchen`,
-      `Dishwasher`,
-      `Cabel TV`,
-      `Fridge`
-    ],
-    type: `Private room`,
-    rating: 4,
-    isBookmarked: true,
-    isPremium: false,
-    price: 188,
-    hostName: `Angelina`,
-    hostAvatar: `img/avatar-angelina.jpg`,
-    hostStatus: `pro`,
-    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
-                  The building is green and from 18th century.
-                  An independent House, strategically located between Rembrand Square and National Opera,
-                  but where the bustle of the city comes to rest in this alley flowery and colorful.`
-  }
+const mockStore = configureStore([]);
+
+const city = {
+  name: `Amsterdam`,
+  coords: [12, 12],
+  zoom: 10
+};
+
+const offersCoords = [
+  [12, 12],
+  [12, 12],
+  [12, 12],
+  [12, 12],
+  [12, 12]
 ];
 
+const cities = [
+  {
+    name: `Paris`,
+    coords: [4134, 123123],
+    zoom: 10
+  },
+  {
+    name: `Paris`,
+    coords: [4134, 123123],
+    zoom: 10
+  },
+  {
+    name: `Paris`,
+    coords: [4134, 123123],
+    zoom: 10
+  },
+  {
+    name: `Paris`,
+    coords: [4134, 123123],
+    zoom: 10
+  },
+  {
+    name: `Paris`,
+    coords: [4134, 123123],
+    zoom: 10
+  },
+  {
+    name: `Paris`,
+    coords: [4134, 123123],
+    zoom: 10
+  },
+];
+
+const hoveredCard = {
+  coords: [123123, 123123]
+};
+
 it(`Should render Map correctly`, () => {
+  const store = mockStore({
+    cities,
+    currentCity: {
+      name: `Amsterdam`,
+      coords: [52.370216, 4.895168],
+      zoom: 10
+    },
+    allOffers: offers,
+    offersByCity: offers.filter((offer) => offer.city.name === `Amsterdam`),
+    offersByCitySorted: offers.filter((offer) => offer.city.name === `Amsterdam`),
+    currentSortType: `Popular`,
+    hoveredCard
+  });
+
   const tree = renderer
-    .create(<Map offers={offers} />)
+    .create(
+        <Provider store={store}>
+          <Map offersCoords={offersCoords} city={city} />
+        </Provider>
+    )
     .toJSON();
 
   expect(tree).toMatchSnapshot();
