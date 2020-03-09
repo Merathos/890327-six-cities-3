@@ -4,7 +4,10 @@ import PropTypes from "prop-types";
 import Map from "../map/map.jsx";
 import CitiesList from "../cities-list/cities-list.jsx";
 import SortingOptions from "../sorting-options/sorting-options.jsx";
+import withActiveItem from "../../hocs/withActiveItem.jsx";
 import {connect} from "react-redux";
+
+const SortingWrapped = withActiveItem(SortingOptions);
 
 const Main = ({offers, handleRentHeaderClick, currentCity}) => {
   return <main className="page__main page__main--index">
@@ -17,12 +20,12 @@ const Main = ({offers, handleRentHeaderClick, currentCity}) => {
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
           <b className="places__found">{`${offers.length} place${offers.length > 1 ? `s` : ``} to stay in ${currentCity.name}`}</b>
-          <SortingOptions />
+          <SortingWrapped />
           <OffersList offers={offers} handleRentHeaderClick={handleRentHeaderClick}/>
         </section>
         <div className="cities__right-section">
           <section className="cities__map map">
-            <Map offersCoords={offers.map((offer)=>offer.coords)} city={currentCity}/>
+            <Map offersCoords={offers.map((offer)=>offer.coords)} />
           </section>
         </div>
       </div>
