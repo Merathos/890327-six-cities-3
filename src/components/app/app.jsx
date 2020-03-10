@@ -25,9 +25,9 @@ class App extends React.PureComponent {
 
     if (activeCard === null) {
       return (
-        <Main
-          handleRentHeaderClick = {this._setActiveCard}
-        />
+        <div className="page page--gray page--main">
+          <Main handleRentHeaderClick = {this._setActiveCard} />
+        </div>
       );
     } else {
       return (
