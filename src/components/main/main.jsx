@@ -6,17 +6,18 @@ import CitiesList from "../cities-list/cities-list.jsx";
 import SortingOptions from "../sorting-options/sorting-options.jsx";
 import withActiveItem from "../../hocs/withActiveItem.jsx";
 import {connect} from "react-redux";
+import MainEmpty from "../main-empty/main-empty.jsx";
 
 const SortingWrapped = withActiveItem(SortingOptions);
 
 const Main = ({offers, handleRentHeaderClick, currentCity}) => {
-  return <main className="page__main page__main--index">
+  return <main className={`page__main page__main--index${offers.length < 1 ? ` page__main--index-empty` : ``}`}>
     <h1 className="visually-hidden">Cities</h1>
     <div className="tabs">
       <CitiesList />
     </div>
     <div className="cities">
-      <div className="cities__places-container container">
+      {offers.length > 0 ? <div className="cities__places-container container">
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
           <b className="places__found">{`${offers.length} place${offers.length > 1 ? `s` : ``} to stay in ${currentCity.name}`}</b>
@@ -28,7 +29,7 @@ const Main = ({offers, handleRentHeaderClick, currentCity}) => {
             <Map offersCoords={offers.map((offer)=>offer.coords)} />
           </section>
         </div>
-      </div>
+      </div> : <MainEmpty />}
     </div>
   </main>;
 };
