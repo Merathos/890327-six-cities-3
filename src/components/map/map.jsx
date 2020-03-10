@@ -13,10 +13,12 @@ class Map extends React.Component {
     this._initCity();
   }
 
-  componentDidUpdate() {
-    this._markersLayer.clearLayers();
-    this.map.setView(this.props.city.coords, this.props.city.zoom);
-    this._addMarkers();
+  componentDidUpdate(prevProps) {
+    if (this.props.hoveredCard.coords !== prevProps.hoveredCard.coords || this.props.city !== prevProps.city) {
+      this._markersLayer.clearLayers();
+      this.map.setView(this.props.city.coords, this.props.city.zoom);
+      this._addMarkers();
+    }
   }
 
   _getIcon() {
@@ -91,7 +93,8 @@ Map.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  hoveredCard: state.hoveredCard
+  hoveredCard: state.hoveredCard,
+  city: state.currentCity
 });
 
 export {Map};
