@@ -1,5 +1,4 @@
 const ActionType = {
-  CHANGE_CITY: `CHANGE_CITY`,
   CHANGE_SORT_TYPE: `CHANGE_SORT_TYPE`,
   SET_HOVERED_CARD: `SET_HOVERED_CARD`,
   REMOVE_HOVERED_CARD: `REMOVE_HOVERED_CARD`,
@@ -11,10 +10,6 @@ const initialState = {
 };
 
 const ActionCreator = {
-  changeCity: (city) => ({
-    type: ActionType.CHANGE_CITY,
-    payload: city
-  }),
   changeSortType: (sortType) => ({
     type: ActionType.CHANGE_SORT_TYPE,
     payload: sortType
@@ -31,10 +26,6 @@ const ActionCreator = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.CHANGE_CITY:
-      return {...state,
-        currentCity: action.payload
-      };
     case ActionType.CHANGE_SORT_TYPE:
       return {...state,
         currentSortType: action.payload

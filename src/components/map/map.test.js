@@ -7,12 +7,6 @@ import offers from "../../__mocks__/offers.js";
 
 const mockStore = configureStore([]);
 
-const city = {
-  name: `Amsterdam`,
-  coords: [12, 12],
-  zoom: 10
-};
-
 const offersCoords = [
   [12, 12],
   [12, 12],
@@ -60,23 +54,25 @@ const hoveredCard = {
 
 it(`Should render Map correctly`, () => {
   const store = mockStore({
-    cities,
-    currentCity: {
-      name: `Amsterdam`,
-      coords: [52.370216, 4.895168],
-      zoom: 10
+    DATA: {
+      offers,
+      cities,
+      currentCity: {
+        name: `Amsterdam`,
+        coords: [52.370216, 4.895168],
+        zoom: 10
+      }
     },
-    allOffers: offers,
-    offersByCity: offers.filter((offer) => offer.city.name === `Amsterdam`),
-    offersByCitySorted: offers.filter((offer) => offer.city.name === `Amsterdam`),
-    currentSortType: `Popular`,
-    hoveredCard
+    APPLICATION: {
+      currentSortType: `Popular`,
+      hoveredCard
+    }
   });
 
   const tree = renderer
     .create(
         <Provider store={store}>
-          <Map offersCoords={offersCoords} city={city} />
+          <Map offersCoords={offersCoords} />
         </Provider>
     )
     .toJSON();

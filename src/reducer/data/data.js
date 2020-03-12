@@ -9,6 +9,7 @@ const initialState = {
 
 const ActionType = {
   LOAD_OFFERS: `LOAD_OFFERS`,
+  CHANGE_CITY: `CHANGE_CITY`
 };
 
 const ActionCreator = {
@@ -18,6 +19,10 @@ const ActionCreator = {
       payload: offers,
     };
   },
+  changeCity: (city) => ({
+    type: ActionType.CHANGE_CITY,
+    payload: city
+  })
 };
 
 const Operation = {
@@ -31,6 +36,11 @@ const Operation = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case ActionType.CHANGE_CITY:
+      return {...state,
+        currentCity: action.payload
+      };
+
     case ActionType.LOAD_OFFERS:
       return {...state,
         offers: action.payload,

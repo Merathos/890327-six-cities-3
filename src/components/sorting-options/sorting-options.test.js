@@ -8,7 +8,9 @@ const mockStore = configureStore([]);
 
 it(`Render Sorting Options`, () => {
   const store = mockStore({
-    currentSortType: `Popular`,
+    APPLICATION: {
+      currentSortType: `Popular`
+    }
   });
 
   const tree = renderer

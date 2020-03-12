@@ -23,11 +23,63 @@ exports[`Render Main 1`] = `
           onClick={[Function]}
         >
           <a
-            className="locations__item-link tabs__item tabs__item--active"
+            className="locations__item-link tabs__item "
             href="#"
           >
             <span>
-              Amsterdam
+              Paris
+            </span>
+          </a>
+        </li>
+        <li
+          className="locations__item"
+          onClick={[Function]}
+        >
+          <a
+            className="locations__item-link tabs__item "
+            href="#"
+          >
+            <span>
+              Paris
+            </span>
+          </a>
+        </li>
+        <li
+          className="locations__item"
+          onClick={[Function]}
+        >
+          <a
+            className="locations__item-link tabs__item "
+            href="#"
+          >
+            <span>
+              Paris
+            </span>
+          </a>
+        </li>
+        <li
+          className="locations__item"
+          onClick={[Function]}
+        >
+          <a
+            className="locations__item-link tabs__item "
+            href="#"
+          >
+            <span>
+              Paris
+            </span>
+          </a>
+        </li>
+        <li
+          className="locations__item"
+          onClick={[Function]}
+        >
+          <a
+            className="locations__item-link tabs__item "
+            href="#"
+          >
+            <span>
+              Paris
             </span>
           </a>
         </li>
