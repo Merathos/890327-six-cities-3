@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../actions/action-creator.js";
+import {ActionCreator} from "../../reducer/application/application.js";
 
 const PlaceCard = ({rentOffer, handleRentHeaderClick, onMouseEnter, onMouseLeave, isNearby}) => {
   const {title, previewImg, type, rating, isBookmarked, isPremium, price} = rentOffer;

@@ -7,6 +7,7 @@ import SortingOptions from "../sorting-options/sorting-options.jsx";
 import withActiveItem from "../../hocs/withActiveItem.jsx";
 import {connect} from "react-redux";
 import MainEmpty from "../main-empty/main-empty.jsx";
+import {getCurrentCity, getSortedOffersByCity} from "../../reducer/data/selectors.js";
 
 const SortingWrapped = withActiveItem(SortingOptions);
 
@@ -57,7 +58,7 @@ Main.propTypes = {
         price: PropTypes.number,
         hostName: PropTypes.string.isRequired,
         hostAvatar: PropTypes.string.isRequired,
-        hostStatus: PropTypes.string,
+        hostStatus: PropTypes.bool,
         description: PropTypes.string.isRequired
       })).isRequired,
   handleRentHeaderClick: PropTypes.func.isRequired,
@@ -65,8 +66,8 @@ Main.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  currentCity: state.currentCity,
-  offers: state.offersByCitySorted
+  currentCity: getCurrentCity(state),
+  offers: getSortedOffersByCity(state)
 });
 
 export {Main};

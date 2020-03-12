@@ -33,7 +33,7 @@ OffersList.propTypes = {
         price: PropTypes.number,
         hostName: PropTypes.string.isRequired,
         hostAvatar: PropTypes.string.isRequired,
-        hostStatus: PropTypes.string,
+        hostStatus: PropTypes.bool,
         description: PropTypes.string.isRequired
       })
   ).isRequired,

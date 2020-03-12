@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import {ActionCreator} from "../../actions/action-creator.js";
+import {ActionCreator} from "../../reducer/application/application.js";
 
 
 const CitiesList = ({onCityClick, currentCity, cities}) => {

@@ -28,7 +28,7 @@ const PlaceDetails = ({rentOffer, handleRentHeaderClick}) => {
       <section className="property">
         <div className="property__gallery-container container">
           <div className="property__gallery">
-            {photos.map((img, i) =>
+            {photos.slice(0, 6).map((img, i) =>
               <div key={`${i}${img}`} className="property__image-wrapper">
                 <img className="property__image" src={img} alt="Photo studio" />
               </div>

@@ -16,6 +16,9 @@ export const sortOffers = (sortType, offers) => {
     case SORT_TYPES.TOP_RATED:
       return offers.slice().sort((a, b) => b.rating - a.rating);
 
+    case SORT_TYPES.POPULAR:
+      return offers;
+
     default:
       return offers;
   }

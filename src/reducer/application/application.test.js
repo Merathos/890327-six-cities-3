@@ -1,8 +1,8 @@
 import {ActionCreator, ActionType} from "../actions/action-creator.js";
-import {reducer} from "./reducer.js";
-import offers from "../__mocks__/offers.js";
+import {reducer} from "./application.js";
+import offers from "../../__mocks__/offers.js";
 import uniqBy from "lodash/uniqBy";
-import {sortOffers} from "../utils/utils.js";
+import {sortOffers} from "../../utils/utils.js";
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
