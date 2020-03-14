@@ -1,24 +1,26 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import Header from "./header.jsx";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
-import SortingOptions from "./sorting-options.jsx";
 
 const mockStore = configureStore([]);
 
-it(`Render Sorting Options`, () => {
+it(`Render Header`, () => {
   const store = mockStore({
-    APPLICATION: {
-      currentSortType: `Popular`
+    USER: {
+      authorizationStatus: `NO_AUTH`,
+      user: {}
     }
   });
 
   const tree = renderer
     .create(
         <Provider store={store}>
-          <SortingOptions />
+          <Header />
         </Provider>
-    ).toJSON();
+    )
+    .toJSON();
 
   expect(tree).toMatchSnapshot();
 });

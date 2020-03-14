@@ -32,7 +32,7 @@ export default [
     price: 120,
     hostName: `Angelina`,
     hostAvatar: `img/avatar-angelina.jpg`,
-    hostStatus: `pro`,
+    hostStatus: true,
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
                   The building is green and from 18th century.
                   An independent House, strategically located between Rembrand Square and National Opera,
@@ -68,7 +68,7 @@ export default [
     price: 80,
     hostName: `Max`,
     hostAvatar: `img/avatar-max.jpg`,
-    hostStatus: ``,
+    hostStatus: false,
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
                   An independent House, strategically located between Rembrand Square and National Opera,
                   but where the bustle of the city comes to rest in this alley flowery and colorful.`
@@ -103,7 +103,7 @@ export default [
     price: 132,
     hostName: `Angelina`,
     hostAvatar: `img/avatar-angelina.jpg`,
-    hostStatus: ``,
+    hostStatus: false,
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
                   The building is green and from 18th century.
                   But where the bustle of the city comes to rest in this alley flowery and colorful.`
@@ -138,7 +138,7 @@ export default [
     price: 180,
     hostName: `Max`,
     hostAvatar: `img/avatar-max.jpg`,
-    hostStatus: `pro`,
+    hostStatus: true,
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
                   The building is green and from 18th century.
                   An independent House, strategically located between Rembrand Square and National Opera.`

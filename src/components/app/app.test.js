@@ -4,7 +4,6 @@ import App from "./app.jsx";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
 import offers from "../../__mocks__/offers.js";
-import uniqBy from 'lodash/uniqBy';
 
 const mockStore = configureStore([]);
 
@@ -12,19 +11,58 @@ const hoveredCard = {
   coords: [123123, 123123]
 };
 
+const cities = [
+  {
+    name: `Paris`,
+    coords: [4134, 123123],
+    zoom: 10
+  },
+  {
+    name: `Paris`,
+    coords: [4134, 123123],
+    zoom: 10
+  },
+  {
+    name: `Paris`,
+    coords: [4134, 123123],
+    zoom: 10
+  },
+  {
+    name: `Paris`,
+    coords: [4134, 123123],
+    zoom: 10
+  },
+  {
+    name: `Paris`,
+    coords: [4134, 123123],
+    zoom: 10
+  },
+  {
+    name: `Paris`,
+    coords: [4134, 123123],
+    zoom: 10
+  },
+];
+
 it(`Render App`, () => {
   const store = mockStore({
-    cities: uniqBy(offers.map((offer) => ({name: offer.city.name, coords: offer.city.coords, zoom: offer.city.zoom})), `name`),
-    currentCity: {
-      name: `Amsterdam`,
-      coords: [52.370216, 4.895168],
-      zoom: 10
+    DATA: {
+      offers,
+      cities,
+      currentCity: {
+        name: `Amsterdam`,
+        coords: [52.370216, 4.895168],
+        zoom: 10
+      }
     },
-    allOffers: offers,
-    offersByCity: offers.filter((offer) => offer.city.name === `Amsterdam`),
-    offersByCitySorted: offers.filter((offer) => offer.city.name === `Amsterdam`),
-    currentSortType: `Popular`,
-    hoveredCard
+    APPLICATION: {
+      currentSortType: `Popular`,
+      hoveredCard
+    },
+    USER: {
+      authorizationStatus: `NO_AUTH`,
+      user: {}
+    }
   });
 
   const tree = renderer

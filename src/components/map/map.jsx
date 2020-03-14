@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import leaflet from "leaflet";
 import {connect} from "react-redux";
+import {getCurrentCity, getHoveredCard} from "../../reducer/data/selectors.js";
 
 class Map extends React.Component {
   constructor(props) {
@@ -93,8 +94,8 @@ Map.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  hoveredCard: state.hoveredCard,
-  city: state.currentCity
+  hoveredCard: getHoveredCard(state),
+  city: getCurrentCity(state)
 });
 
 export {Map};

@@ -46,17 +46,19 @@ const hoveredCard = {
 
 it(`Render place-card`, () => {
   const store = mockStore({
-    cities,
-    currentCity: {
-      name: `Amsterdam`,
-      coords: [52.370216, 4.895168],
-      zoom: 10
+    DATA: {
+      offers,
+      cities,
+      currentCity: {
+        name: `Amsterdam`,
+        coords: [52.370216, 4.895168],
+        zoom: 10
+      }
     },
-    allOffers: offers,
-    offersByCity: offers.filter((offer) => offer.city.name === `Amsterdam`),
-    offersByCitySorted: offers.filter((offer) => offer.city.name === `Amsterdam`),
-    currentSortType: `Popular`,
-    hoveredCard
+    APPLICATION: {
+      currentSortType: `Popular`,
+      hoveredCard
+    }
   });
 
   const tree = renderer

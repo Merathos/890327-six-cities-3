@@ -1,7 +1,8 @@
 import React from "react";
-import {ActionCreator} from "../../actions/action-creator.js";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
+import {ActionCreator} from "../../reducer/application/application.js";
+import {getSortType} from "../../reducer/data/selectors.js";
 
 const SORT_TYPES = [
   `Popular`,
@@ -43,7 +44,7 @@ SortingOptions.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  currentSortType: state.currentSortType
+  currentSortType: getSortType(state)
 });
 
 const mapDispatchToProps = {
