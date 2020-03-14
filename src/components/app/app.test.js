@@ -58,6 +58,10 @@ it(`Render App`, () => {
     APPLICATION: {
       currentSortType: `Popular`,
       hoveredCard
+    },
+    USER: {
+      authorizationStatus: `NO_AUTH`,
+      user: {}
     }
   });
 
