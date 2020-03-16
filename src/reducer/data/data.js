@@ -164,7 +164,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.UPDATE_OFFERS:
       const {newOffer} = action.payload;
       const updatedOffers = state.offers.slice();
-      const index = updatedOffers.findIndex((offer) => offer.id === newOffer.id);
+      const index = updatedOffers.findIndex((offer) => offer.id === newOffer.id.toString());
       updatedOffers[index] = newOffer;
 
       return {...state,
