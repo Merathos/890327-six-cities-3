@@ -1,21 +1,16 @@
-const AuthorizationStatus = {
-  AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`,
-};
-
 const initialState = {
-  authorizationStatus: AuthorizationStatus.NO_AUTH,
+  isAuthorized: false,
   user: {}
 };
 
 const ActionType = {
-  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  CHECK_AUTH: `CHECK_AUTH`,
   SET_USER: `SET_USER`
 };
 
 const ActionCreator = {
-  requireAuthorization: (status) => ({
-    type: ActionType.REQUIRED_AUTHORIZATION,
+  checkAuthorization: (status) => ({
+    type: ActionType.CHECK_AUTH,
     payload: status
   }),
   setUser: (userInfo) => ({
@@ -28,7 +23,7 @@ const Operation = {
   checkAuth: () => (dispatch, getState, api) => {
     return api.get(`/login`)
       .then((response) => {
-        dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.checkAuthorization(true));
         dispatch(ActionCreator.setUser(response.data));
       })
       .catch((err) => {
@@ -42,7 +37,7 @@ const Operation = {
       password: authData.password,
     })
       .then((response) => {
-        dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.checkAuthorization(true));
         dispatch(ActionCreator.setUser(response.data));
       });
   },
@@ -50,9 +45,9 @@ const Operation = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.REQUIRED_AUTHORIZATION:
+    case ActionType.CHECK_AUTH:
       return {...state,
-        authorizationStatus: action.payload
+        isAuthorized: action.payload
       };
     case ActionType.SET_USER:
       return {...state,
@@ -63,4 +58,4 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
-export {reducer, Operation, ActionType, ActionCreator, AuthorizationStatus};
+export {reducer, Operation, ActionType, ActionCreator};

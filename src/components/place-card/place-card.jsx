@@ -2,9 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/application/application.js";
+import {Link} from 'react-router-dom';
+import {Operation as DataOperation} from "../../reducer/data/data.js";
+import {getBookmarkStatus} from "../../reducer/data/selectors.js";
+import {OperationStatus} from "../../utils/const.js";
 
-const PlaceCard = ({rentOffer, handleRentHeaderClick, onMouseEnter, onMouseLeave, isNearby}) => {
-  const {title, previewImg, type, rating, isBookmarked, isPremium, price} = rentOffer;
+const PlaceCard = ({rentOffer, onMouseEnter, onMouseLeave, isNearby, handleBookmarkClick, bookmarkStatus}) => {
+  const {title, previewImg, type, rating, isBookmarked, isPremium, price, id} = rentOffer;
+  const onBookmarkClick = () => handleBookmarkClick(id, isBookmarked ? 0 : 1);
 
   return (
     <article className={isNearby ? `near-places__card place-card` : `cities__place-card place-card`}
@@ -23,7 +28,7 @@ const PlaceCard = ({rentOffer, handleRentHeaderClick, onMouseEnter, onMouseLeave
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className={`place-card__bookmark-button button ` + (isBookmarked ? `place-card__bookmark-button--active` : ``)} type="button">
+          <button className={`place-card__bookmark-button button ${isBookmarked ? `place-card__bookmark-button--active ` : ``}${bookmarkStatus === OperationStatus.FAILED ? `place-card__bookmark-button--error` : ``}`} type="button" onClick={onBookmarkClick}>
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"/>
             </svg>
@@ -37,11 +42,8 @@ const PlaceCard = ({rentOffer, handleRentHeaderClick, onMouseEnter, onMouseLeave
           </div>
         </div>
         <h2
-          onClick={() => {
-            handleRentHeaderClick(rentOffer);
-          }}
           className="place-card__name">
-          <a href="#">{title}</a>
+          <Link to={`/offer/${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -61,15 +63,21 @@ PlaceCard.propTypes = {
     price: PropTypes.number,
   }).isRequired,
   isNearby: PropTypes.bool,
-  handleRentHeaderClick: PropTypes.func.isRequired,
   onMouseEnter: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired
+  onMouseLeave: PropTypes.func.isRequired,
+  handleBookmarkClick: PropTypes.func.isRequired,
+  bookmarkStatus: PropTypes.string
 };
+
+const mapStateToProps = (state) => ({
+  bookmarkStatus: getBookmarkStatus(state)
+});
 
 const mapDispatchToProps = {
   onMouseEnter: ActionCreator.setHoveredCard,
-  onMouseLeave: ActionCreator.removeHoveredCard
+  onMouseLeave: ActionCreator.removeHoveredCard,
+  handleBookmarkClick: DataOperation.addBookmark
 };
 
 export {PlaceCard};
-export default connect(null, mapDispatchToProps)(PlaceCard);
+export default connect(mapStateToProps, mapDispatchToProps)(PlaceCard);
