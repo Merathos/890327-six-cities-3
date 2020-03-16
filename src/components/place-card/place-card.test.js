@@ -4,6 +4,7 @@ import PlaceCard from "./place-card.jsx";
 import offers from "../../__mocks__/offers.js";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
+import {BrowserRouter as Router} from 'react-router-dom';
 
 const mockStore = configureStore([]);
 
@@ -53,7 +54,8 @@ it(`Render place-card`, () => {
         name: `Amsterdam`,
         coords: [52.370216, 4.895168],
         zoom: 10
-      }
+      },
+      bookmarkStatus: `SUCCESS`
     },
     APPLICATION: {
       currentSortType: `Popular`,
@@ -63,12 +65,13 @@ it(`Render place-card`, () => {
 
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <PlaceCard
-            rentOffer={offers[0]}
-            handleRentHeaderClick={() => {}}
-          />
-        </Provider>
+        <Router>
+          <Provider store={store}>
+            <PlaceCard
+              rentOffer={offers[0]}
+            />
+          </Provider>
+        </Router>
     )
     .toJSON();
 

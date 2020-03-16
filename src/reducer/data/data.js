@@ -24,7 +24,8 @@ const ActionType = {
   LOAD_NEARBY_OFFERS: `LOAD_NEARBY_OFFERS`,
   SET_DETAILS_OFFER_ID: `SET_DETAILS_OFFER_ID`,
   LOAD_COMMENTS: `LOAD_COMMENTS`,
-  SET_OPERATION_STATUS: `SET_OPERATION_STATUS`
+  SET_OPERATION_STATUS: `SET_OPERATION_STATUS`,
+  UPDATE_OFFERS: `UPDATE_OFFERS`
 };
 
 const ActionCreator = {
@@ -63,6 +64,11 @@ const ActionCreator = {
         name,
         status
       }
+    }),
+  updateOffers: (newOffer) =>
+    ({
+      type: ActionType.UPDATE_OFFERS,
+      payload: newOffer
     })
 };
 
@@ -104,16 +110,13 @@ const Operation = {
     dispatch(ActionCreator.setOperationStatus(`bookmarkStatus`, OperationStatus.PENDING));
     return api.post(`/favorite/${id}/${status}`)
     .then((response) => {
-      const data = response.data;
-      const offers = getState().DATA.offers;
-      const index = offers.findIndex((offer) => offer.id === data.id);
+      const newOffer = offersAdapter(response.data);
 
-      offers[index] = offersAdapter(data);
-
-      dispatch(ActionCreator.loadOffers(offers));
+      dispatch(ActionCreator.updateOffers(newOffer));
       dispatch(ActionCreator.setOperationStatus(`bookmarkStatus`, OperationStatus.SUCCESS));
     })
     .catch((err) => {
+      console.log(err)
       if (err.response && err.response.status === Error.UNAUTHORIZED) {
         history.push(`/login`);
       } else {
@@ -151,10 +154,21 @@ const reducer = (state = initialState, action) => {
       return {...state,
         comments: action.payload
       };
+
     case ActionType.SET_OPERATION_STATUS:
       const {name, status} = action.payload;
       return {...state,
         [name]: status
+      };
+
+    case ActionType.UPDATE_OFFERS:
+      const {newOffer} = action.payload;
+      const updatedOffers = state.offers.slice();
+      const index = updatedOffers.findIndex((offer) => offer.id === newOffer.id);
+      updatedOffers[index] = newOffer;
+
+      return {...state,
+        offers: updatedOffers
       };
   }
 

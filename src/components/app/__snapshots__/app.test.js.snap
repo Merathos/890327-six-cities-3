@@ -18,6 +18,8 @@ exports[`Render App 1`] = `
         >
           <a
             className="header__logo-link header__logo-link--active"
+            href="/"
+            onClick={[Function]}
           >
             <img
               alt="6 cities logo"
@@ -39,7 +41,8 @@ exports[`Render App 1`] = `
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/login"
+                onClick={[Function]}
               >
                 <div
                   className="header__avatar-wrapper user__avatar-wrapper"
@@ -278,7 +281,8 @@ exports[`Render App 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button place-card__bookmark-button--active"
+                    className="place-card__bookmark-button button place-card__bookmark-button--active "
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -319,10 +323,10 @@ exports[`Render App 1`] = `
                 </div>
                 <h2
                   className="place-card__name"
-                  onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/41324"
+                    onClick={[Function]}
                   >
                     Beautiful & luxurious apartment at great location
                   </a>
@@ -384,6 +388,7 @@ exports[`Render App 1`] = `
                   </div>
                   <button
                     className="place-card__bookmark-button button "
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -424,10 +429,10 @@ exports[`Render App 1`] = `
                 </div>
                 <h2
                   className="place-card__name"
-                  onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/73645"
+                    onClick={[Function]}
                   >
                     Wood and stone place
                   </a>
@@ -482,7 +487,8 @@ exports[`Render App 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button place-card__bookmark-button--active"
+                    className="place-card__bookmark-button button place-card__bookmark-button--active "
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -523,10 +529,10 @@ exports[`Render App 1`] = `
                 </div>
                 <h2
                   className="place-card__name"
-                  onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/23455"
+                    onClick={[Function]}
                   >
                     Canal View Prinsengracht
                   </a>

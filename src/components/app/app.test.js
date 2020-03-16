@@ -53,14 +53,16 @@ it(`Render App`, () => {
         name: `Amsterdam`,
         coords: [52.370216, 4.895168],
         zoom: 10
-      }
+      },
+      detailsOfferID: `2`,
+      nearbyOffers: offers
     },
     APPLICATION: {
       currentSortType: `Popular`,
       hoveredCard
     },
     USER: {
-      authorizationStatus: `NO_AUTH`,
+      isAuthorized: false,
       user: {}
     }
   });
