@@ -11,7 +11,7 @@ import {getCurrentCity, getSortedOffersByCity} from "../../reducer/data/selector
 
 const SortingWrapped = withActiveItem(SortingOptions);
 
-const Main = ({offers, handleRentHeaderClick, currentCity}) => {
+const Main = ({offers, currentCity}) => {
   return <main className={`page__main page__main--index${offers.length < 1 ? ` page__main--index-empty` : ``}`}>
     <h1 className="visually-hidden">Cities</h1>
     <div className="tabs">
@@ -23,7 +23,7 @@ const Main = ({offers, handleRentHeaderClick, currentCity}) => {
           <h2 className="visually-hidden">Places</h2>
           <b className="places__found">{`${offers.length} place${offers.length > 1 ? `s` : ``} to stay in ${currentCity.name}`}</b>
           <SortingWrapped />
-          <OffersList offers={offers} handleRentHeaderClick={handleRentHeaderClick}/>
+          <OffersList offers={offers} />
         </section>
         <div className="cities__right-section">
           <section className="cities__map map">
@@ -61,7 +61,6 @@ Main.propTypes = {
         hostStatus: PropTypes.bool,
         description: PropTypes.string.isRequired
       })).isRequired,
-  handleRentHeaderClick: PropTypes.func.isRequired,
   currentCity: PropTypes.object.isRequired,
 };
 

@@ -2,13 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import PlaceCard from "../place-card/place-card.jsx";
 
-const OffersList = ({offers, handleRentHeaderClick, isNearby}) => {
+const OffersList = ({offers, isNearby}) => {
   return (
     <div className={isNearby ? `near-places__list places__list` : `cities__places-list places__list tabs__content`}>
       {offers.map((rentOffer) => <PlaceCard
         key={rentOffer.id}
         rentOffer={rentOffer}
-        handleRentHeaderClick={handleRentHeaderClick}
         isNearby={isNearby}
       />)}
     </div>
@@ -38,7 +37,6 @@ OffersList.propTypes = {
       })
   ).isRequired,
   isNearby: PropTypes.bool,
-  handleRentHeaderClick: PropTypes.func.isRequired
 };
 
 export default OffersList;

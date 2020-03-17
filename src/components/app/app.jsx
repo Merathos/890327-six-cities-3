@@ -1,80 +1,40 @@
 import React from "react";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Router, Route, Switch} from "react-router-dom";
+import history from "../../history.js";
 import Main from "../main/main.jsx";
 import PlaceDetails from "../place-details/place-details.jsx";
 import Header from "../header/header.jsx";
 import SignIn from "../sign-in/sign-in.jsx";
 import {connect} from "react-redux";
-import {Operation as UserOperation} from "../../reducer/user/user.js";
+import {getAuthStatus} from "../../reducer/user/selectors.js";
 import PropTypes from "prop-types";
+import PrivateRoute from "../../components/private-route/private-route.jsx";
 
-class App extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeCard: null
-    };
-
-    this._setActiveCard = this._setActiveCard.bind(this);
-  }
-
-  _setActiveCard(rentOffer) {
-    this.setState({
-      activeCard: rentOffer
-    });
-  }
-
-  _renderApp() {
-    const {activeCard} = this.state;
-
-    if (activeCard === null) {
-      return (
-        <div className="page page--gray page--main">
-          <Header />
-          <Main handleRentHeaderClick = {this._setActiveCard} />
-        </div>
-      );
-    } else {
-      return (
-        <PlaceDetails
-          rentOffer = {this.state.activeCard}
-          handleRentHeaderClick = {this._setActiveCard}
-        />
-      );
-    }
-  }
-
-  render() {
-    return (
-      <BrowserRouter>
-        <Switch>
-          <Route exact path = "/">
-            {
-              this._renderApp()
-            }
-          </Route>
-          <Route exact path = "/login">
-            <div className="page page--gray page--login">
-              <Header />
-              <SignIn onSubmit={this.props.login}/>
-            </div>
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    );
-  }
-}
-
-App.propTypes = {
-  login: PropTypes.func.isRequired
+const App = ({isAuthorized}) => {
+  return (
+    <Router history={history}>
+      <Switch>
+        <PrivateRoute path = "/login" component={SignIn} redirectTo = "/" requireAuth={!isAuthorized}/>
+        <Route exact path="/" render={(props) =>
+          <div className="page page--gray page--main">
+            <Header />
+            <Main {...props} />
+          </div>
+        } />
+        <Route exact path="/offer/:id" component={PlaceDetails}/>
+      </Switch>
+    </Router>
+  );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  login(authData) {
-    dispatch(UserOperation.login(authData));
-  }
+
+App.propTypes = {
+  isAuthorized: PropTypes.bool.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  isAuthorized: getAuthStatus(state)
 });
 
 export {App};
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

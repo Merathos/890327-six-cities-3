@@ -4,6 +4,7 @@ import OffersList from "./offers-list.jsx";
 import offers from "../../__mocks__/offers";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
+import {BrowserRouter as Router} from 'react-router-dom';
 
 const mockStore = configureStore([]);
 
@@ -63,12 +64,13 @@ it(`Render Offers list`, () => {
 
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <OffersList
-            offers={offers}
-            handleRentHeaderClick={() => {}}
-          />
-        </Provider>
+        <Router>
+          <Provider store={store}>
+            <OffersList
+              offers={offers}
+            />
+          </Provider>
+        </Router>
     )
     .toJSON();
 

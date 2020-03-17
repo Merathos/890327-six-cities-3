@@ -44,7 +44,8 @@ exports[`Render place-card 1`] = `
         </span>
       </div>
       <button
-        className="place-card__bookmark-button button place-card__bookmark-button--active"
+        className="place-card__bookmark-button button place-card__bookmark-button--active "
+        onClick={[Function]}
         type="button"
       >
         <svg
@@ -85,10 +86,10 @@ exports[`Render place-card 1`] = `
     </div>
     <h2
       className="place-card__name"
-      onClick={[Function]}
     >
       <a
-        href="#"
+        href="/offer/41324"
+        onClick={[Function]}
       >
         Beautiful & luxurious apartment at great location
       </a>

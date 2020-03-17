@@ -1,4 +1,4 @@
-export const adapter = (offer) => {
+export const offersAdapter = (offer) => {
   return {
     id: offer.id.toString(),
     city: {
@@ -23,5 +23,16 @@ export const adapter = (offer) => {
     hostAvatar: offer.host.avatar_url,
     hostStatus: offer.host.is_pro,
     description: offer.description
+  };
+};
+
+export const commentsAdapter = (comment) => {
+  return {
+    id: comment.id.toString(),
+    name: comment.user.name,
+    avatar: comment.user.avatar_url,
+    rating: comment.rating,
+    date: comment.date,
+    text: comment.comment
   };
 };
