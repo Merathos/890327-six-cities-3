@@ -72,6 +72,7 @@ it(`Render place-details`, () => {
     }
   });
 
+  store.dispatch = jest.fn();
   const tree = renderer
     .create(
         <Router>
