@@ -15,7 +15,8 @@ const initialState = {
   nearbyOffers: [],
   comments: [],
   commentStatus: ``,
-  bookmarkStatus: ``
+  bookmarkStatus: ``,
+  bookmarkedOffers: []
 };
 
 const ActionType = {
@@ -25,7 +26,8 @@ const ActionType = {
   SET_DETAILS_OFFER_ID: `SET_DETAILS_OFFER_ID`,
   LOAD_COMMENTS: `LOAD_COMMENTS`,
   SET_OPERATION_STATUS: `SET_OPERATION_STATUS`,
-  UPDATE_OFFERS: `UPDATE_OFFERS`
+  UPDATE_OFFERS: `UPDATE_OFFERS`,
+  LOAD_BOOKMARKED_OFFERS: `LOAD_BOOKMARKED_OFFERS`
 };
 
 const ActionCreator = {
@@ -69,7 +71,13 @@ const ActionCreator = {
     ({
       type: ActionType.UPDATE_OFFERS,
       payload: newOffer
-    })
+    }),
+  loadBookmarkedOffers: (offers) => {
+    return {
+      type: ActionType.LOAD_BOOKMARKED_OFFERS,
+      payload: offers
+    };
+  },
 };
 
 const Operation = {
@@ -106,13 +114,19 @@ const Operation = {
         dispatch(ActionCreator.setOperationStatus(`commentStatus`, OperationStatus.FAILED));
       });
   },
+  loadBookmarkedOffers: () => (dispatch, getState, api) => {
+    return api.get(`/favorite`)
+        .then((response) => {
+          dispatch(ActionCreator.loadBookmarkedOffers(response.data.map((offer) => offersAdapter(offer))));
+        });
+  },
   addBookmark: (id, status) => (dispatch, getState, api) => {
     dispatch(ActionCreator.setOperationStatus(`bookmarkStatus`, OperationStatus.PENDING));
     return api.post(`/favorite/${id}/${status}`)
     .then((response) => {
       const newOffer = offersAdapter(response.data);
-
       dispatch(ActionCreator.updateOffers(newOffer));
+      dispatch(Operation.loadBookmarkedOffers());
       dispatch(ActionCreator.setOperationStatus(`bookmarkStatus`, OperationStatus.SUCCESS));
     })
     .catch((err) => {
@@ -168,6 +182,11 @@ const reducer = (state = initialState, action) => {
 
       return {...state,
         offers: updatedOffers
+      };
+
+    case ActionType.LOAD_BOOKMARKED_OFFERS:
+      return {...state,
+        bookmarkedOffers: action.payload
       };
   }
 

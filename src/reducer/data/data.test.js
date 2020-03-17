@@ -16,7 +16,8 @@ it(`Reducer without additional parameters should return initial state`, () => {
     nearbyOffers: [],
     comments: [],
     commentStatus: ``,
-    bookmarkStatus: ``
+    bookmarkStatus: ``,
+    bookmarkedOffers: []
   });
 });
 

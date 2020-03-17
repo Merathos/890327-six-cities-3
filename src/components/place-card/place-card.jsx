@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
@@ -7,22 +8,22 @@ import {Operation as DataOperation} from "../../reducer/data/data.js";
 import {getBookmarkStatus} from "../../reducer/data/selectors.js";
 import {OperationStatus} from "../../utils/const.js";
 
-const PlaceCard = ({rentOffer, onMouseEnter, onMouseLeave, isNearby, handleBookmarkClick, bookmarkStatus}) => {
+const PlaceCard = ({rentOffer, onMouseEnter, onMouseLeave, isNearby, handleBookmarkClick, bookmarkStatus, onFavoritesList}) => {
   const {title, previewImg, type, rating, isBookmarked, isPremium, price, id} = rentOffer;
   const onBookmarkClick = () => handleBookmarkClick(id, isBookmarked ? 0 : 1);
 
   return (
-    <article className={isNearby ? `near-places__card place-card` : `cities__place-card place-card`}
+    <article className={onFavoritesList ? `favorites__card place-card` : isNearby ? `near-places__card place-card` : `cities__place-card place-card`}
       onMouseEnter={() => onMouseEnter(rentOffer)}
       onMouseLeave={() => onMouseLeave()}
     >
       {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
-      <div className={isNearby ? `near-places__image-wrapper place-card__image-wrapper` : `cities__image-wrapper place-card__image-wrapper`}>
+      <div className={onFavoritesList ? `favorites__image-wrapper place-card__image-wrapper` : isNearby ? `near-places__image-wrapper place-card__image-wrapper` : `cities__image-wrapper place-card__image-wrapper`}>
         <a href="#">
-          <img className="place-card__image" src={previewImg} width="260" height="200" alt="Place image"/>
+          <img className="place-card__image" src={previewImg} width={onFavoritesList ? `150` : `260`} height={onFavoritesList ? `110` : `200`} alt="Place image"/>
         </a>
       </div>
-      <div className="place-card__info">
+      <div className={`${onFavoritesList ? `favorites__card-info ` : ``}place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>
@@ -66,7 +67,8 @@ PlaceCard.propTypes = {
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
   handleBookmarkClick: PropTypes.func.isRequired,
-  bookmarkStatus: PropTypes.string
+  bookmarkStatus: PropTypes.string,
+  onFavoritesList: PropTypes.bool
 };
 
 const mapStateToProps = (state) => ({

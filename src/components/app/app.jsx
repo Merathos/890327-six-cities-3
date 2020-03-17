@@ -9,12 +9,14 @@ import {connect} from "react-redux";
 import {getAuthStatus} from "../../reducer/user/selectors.js";
 import PropTypes from "prop-types";
 import PrivateRoute from "../../components/private-route/private-route.jsx";
+import Favorites from "../favorites/favorites.jsx";
 
 const App = ({isAuthorized}) => {
   return (
     <Router history={history}>
       <Switch>
         <PrivateRoute path = "/login" component={SignIn} redirectTo = "/" requireAuth={!isAuthorized}/>
+        <PrivateRoute path = "/favorites" component={Favorites} redirectTo = "/login" requireAuth={isAuthorized}/>
         <Route exact path="/" render={(props) =>
           <div className="page page--gray page--main">
             <Header />
