@@ -79,6 +79,7 @@ class ReviewForm extends React.PureComponent {
   }
 }
 
+
 ReviewForm.propTypes = {
   id: PropTypes.string,
   commentStatus: PropTypes.string,
