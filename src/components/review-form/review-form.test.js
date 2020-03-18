@@ -6,7 +6,7 @@ import {Provider} from "react-redux";
 
 const mockStore = configureStore([]);
 
-it(`Should render Cities List`, () => {
+it(`Should render Review form`, () => {
   const store = mockStore({
     DATA: {
       commentStatus: `SUCCESS`
