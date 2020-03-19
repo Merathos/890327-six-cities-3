@@ -19,6 +19,7 @@ const store = createStore(reducer, compose(applyMiddleware(thunk.withExtraArgume
 
 store.dispatch(DataOperation.loadOffers());
 store.dispatch(UserOperation.checkAuth());
+store.dispatch(DataOperation.loadBookmarkedOffers());
 
 ReactDOM.render(
     <Provider store={store}>

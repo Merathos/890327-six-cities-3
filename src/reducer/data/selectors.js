@@ -50,3 +50,11 @@ export const getCommentStatus = (state) => {
 export const getBookmarkStatus = (state) => {
   return state[NameSpace.DATA].bookmarkStatus;
 };
+
+export const getBookmarkedOffers = (state) => {
+  return state[NameSpace.DATA].bookmarkedOffers;
+};
+
+export const getBookmarkedOffersCities = createSelector([getBookmarkedOffers], (offers) => {
+  return [...new Set(offers.map((offer) => offer.city.name))];
+});

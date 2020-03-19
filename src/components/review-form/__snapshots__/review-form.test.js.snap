@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render Cities List 1`] = `
+exports[`Should render Review form 1`] = `
 <form
   action="#"
   className="reviews__form form"
