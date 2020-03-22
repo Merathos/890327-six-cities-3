@@ -1,8 +1,9 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
 import ReviewItem from "./review-item";
+import {Comment} from "../../interfaces";
 
-const review = {
+const review: Comment = {
   id: `51243`,
   name: `Max`,
   avatar: `img/avatar-max.jpg`,

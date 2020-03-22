@@ -5,14 +5,13 @@ import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
 import offers from "../../__mocks__/offers";
 import {BrowserRouter as Router} from 'react-router-dom';
+import {Offer, City} from "../../interfaces";
 
 const mockStore = configureStore([]);
 
-const hoveredCard = {
-  coords: [123123, 123123]
-};
+const hoveredCard: Offer = offers[0];
 
-const cities = [
+const cities: City[] = [
   {
     name: `Paris`,
     coords: [4134, 123123],

@@ -1,8 +1,9 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
 import ReviewList from "./reviews-list";
+import {Comment} from "../../interfaces";
 
-const reviews = [
+const reviews: Comment[] = [
   {
     id: `51243`,
     name: `Max`,

@@ -4,10 +4,11 @@ import CitiesList from "./cities-list";
 import offers from "../../__mocks__/offers";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
+import {City, Offer} from "../../interfaces";
 
 const mockStore = configureStore([]);
 
-const cities = [
+const cities: City[] = [
   {
     name: `Paris`,
     coords: [4134, 123123],
@@ -40,9 +41,7 @@ const cities = [
   },
 ];
 
-const hoveredCard = {
-  coords: [123123, 123123]
-};
+const hoveredCard: Offer = offers[0];
 
 it(`Should render Cities List`, () => {
   const store = mockStore({
