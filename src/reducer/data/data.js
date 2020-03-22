@@ -1,7 +1,7 @@
-import {offersAdapter, commentsAdapter} from "../../api/adapter.js";
+import {offersAdapter, commentsAdapter} from "../../api/adapter";
 import uniqBy from 'lodash/uniqBy';
-import {OperationStatus} from "../../utils/const.js";
-import history from "../../history.js";
+import {OperationStatus} from "../../utils/const";
+import history from "../../history";
 
 const Error = {
   UNAUTHORIZED: 401
