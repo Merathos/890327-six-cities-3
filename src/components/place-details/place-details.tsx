@@ -24,7 +24,7 @@ interface Props {
   nearbyOffers: Offer[];
   comments: Comment[];
   bookmarkStatus: string;
-  isAuthorized: string;
+  isAuthorized: boolean;
   setDetailsOfferID: (id: string) => void;
   loadComments: (id: string) => void;
   loadNearbyOffers: (id: string) => void;
