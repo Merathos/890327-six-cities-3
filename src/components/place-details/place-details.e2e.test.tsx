@@ -25,7 +25,7 @@ it(`Place details should set bookmark`, () => {
         setDetailsOfferID={jest.fn}
         loadComments={jest.fn}
         loadNearbyOffers={jest.fn}
-        handleBookmarkClick={handleClick}
+        onBookmarkClick={handleClick}
       />
   );
 

@@ -1,11 +1,13 @@
 const initialState = {
   isAuthorized: false,
-  user: {}
+  user: {},
+  authRequestStatus: ``
 };
 
 const ActionType = {
   CHECK_AUTH: `CHECK_AUTH`,
-  SET_USER: `SET_USER`
+  SET_USER: `SET_USER`,
+  SET_AUTH_REQUEST_STATUS: `SET_AUTH_REQUEST_STATUS`
 };
 
 const ActionCreator = {
@@ -16,6 +18,10 @@ const ActionCreator = {
   setUser: (userInfo) => ({
     type: ActionType.SET_USER,
     payload: userInfo
+  }),
+  setAuthRequestStatus: (status) => ({
+    type: ActionType.SET_AUTH_REQUEST_STATUS,
+    payload: status
   })
 };
 
@@ -25,8 +31,10 @@ const Operation = {
       .then((response) => {
         dispatch(ActionCreator.checkAuthorization(true));
         dispatch(ActionCreator.setUser(response.data));
+        dispatch(ActionCreator.setAuthRequestStatus(`SUCCESS`));
       })
       .catch((err) => {
+        dispatch(ActionCreator.setAuthRequestStatus(`SUCCESS`));
         throw err;
       });
   },
@@ -52,6 +60,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_USER:
       return {...state,
         user: action.payload
+      };
+    case ActionType.SET_AUTH_REQUEST_STATUS:
+      return {...state,
+        authRequestStatus: action.payload
       };
   }
 

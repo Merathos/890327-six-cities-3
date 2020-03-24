@@ -6,16 +6,16 @@ import PlaceDetails from "../place-details/place-details";
 import Header from "../header/header";
 import SignIn from "../sign-in/sign-in";
 import {connect} from "react-redux";
-import {getAuthStatus} from "../../reducer/user/selectors";
+import {getAuthStatus, getAuthRequestStatus} from "../../reducer/user/selectors";
 import PrivateRoute from "../private-route/private-route";
 import Favorites from "../favorites/favorites";
 
-const App: React.FC<{isAuthorized: boolean}> = ({isAuthorized}) => {
+const App: React.FC<{isAuthorized: boolean; authRequestStatus: string}> = ({isAuthorized, authRequestStatus}) => {
   return (
     <Router history={history}>
       <Switch>
-        <PrivateRoute path = "/login" component={SignIn} redirectTo = "/" requireAuth={!isAuthorized}/>
-        <PrivateRoute path = "/favorites" component={Favorites} redirectTo = "/login" requireAuth={isAuthorized}/>
+        <PrivateRoute path = "/login" component={SignIn} redirectTo = "/" requireAuth={!isAuthorized} authRequestStatus={authRequestStatus} />
+        <PrivateRoute path = "/favorites" component={Favorites} redirectTo = "/login" requireAuth={isAuthorized} authRequestStatus={authRequestStatus} />
         <Route exact path="/" render={(props) =>
           <div className="page page--gray page--main">
             <Header />
@@ -29,7 +29,8 @@ const App: React.FC<{isAuthorized: boolean}> = ({isAuthorized}) => {
 };
 
 const mapStateToProps = (state) => ({
-  isAuthorized: getAuthStatus(state)
+  isAuthorized: getAuthStatus(state),
+  authRequestStatus: getAuthRequestStatus(state)
 });
 
 export {App};

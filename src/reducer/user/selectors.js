@@ -7,3 +7,7 @@ export const getAuthStatus = (state) => {
 export const getUser = (state) => {
   return state[NameSpace.USER].user;
 };
+
+export const getAuthRequestStatus = (state) => {
+  return state[NameSpace.USER].authRequestStatus;
+};

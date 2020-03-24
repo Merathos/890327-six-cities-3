@@ -3,7 +3,7 @@ import OffersList from "../offers-list/offers-list";
 import Map from "../map/map";
 import CitiesList from "../cities-list/cities-list";
 import SortingOptions from "../sorting-options/sorting-options";
-import withActiveItem from "../../hocs/withActiveItem";
+import withActiveItem from "../../hocs/with-active-item";
 import {connect} from "react-redux";
 import MainEmpty from "../main-empty/main-empty";
 import {getCurrentCity, getSortedOffersByCity} from "../../reducer/data/selectors";
