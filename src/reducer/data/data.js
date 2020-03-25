@@ -118,7 +118,7 @@ const Operation = {
     return api.get(`/favorite`)
         .then((response) => {
           dispatch(ActionCreator.loadBookmarkedOffers(response.data.map((offer) => offersAdapter(offer))));
-        });
+        }).catch(() => {});
   },
   addBookmark: (id, status) => (dispatch, getState, api) => {
     dispatch(ActionCreator.setOperationStatus(`bookmarkStatus`, OperationStatus.PENDING));

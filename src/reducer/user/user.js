@@ -33,9 +33,8 @@ const Operation = {
         dispatch(ActionCreator.setUser(response.data));
         dispatch(ActionCreator.setAuthRequestStatus(`SUCCESS`));
       })
-      .catch((err) => {
+      .catch(() => {
         dispatch(ActionCreator.setAuthRequestStatus(`SUCCESS`));
-        throw err;
       });
   },
 

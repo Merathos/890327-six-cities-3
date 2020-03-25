@@ -13,15 +13,15 @@ const SORT_TYPES = [
 interface Props {
   currentSortType: string;
   isActive: boolean;
-  handleClick: () => void;
+  onSortClick: () => void;
   onSortTypeClick: (sortType: string) => void;
 }
 
-const SortingOptions: React.FC<Props> = ({currentSortType, handleClick, isActive, onSortTypeClick}) => {
+const SortingOptions: React.FC<Props> = ({currentSortType, onSortClick, isActive, onSortTypeClick}) => {
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by </span>
-      <span className="places__sorting-type" tabIndex={0} onClick={handleClick}>
+      <span className="places__sorting-type" tabIndex={0} onClick={onSortClick}>
         {currentSortType}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"/>
@@ -33,7 +33,7 @@ const SortingOptions: React.FC<Props> = ({currentSortType, handleClick, isActive
           return (
             <li key={sortType + index} className={sortTypeClass} tabIndex={0} onClick={() => {
               onSortTypeClick(sortType);
-              handleClick();
+              onSortClick();
             }}>{sortType}</li>
           );
         })}
